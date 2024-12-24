@@ -30,6 +30,13 @@
     };
   };
 
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      tmux = "tmux -u";
+    };
+  };
+
   programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
