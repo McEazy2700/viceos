@@ -29,10 +29,27 @@
       last = "log -1 HEAD";
     };
   };
+
   programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
+    plugins = with pkgs; [
+      tmuxPlugins.sensible
+      tmuxPlugins.vim-tmux-navigator
+      tmuxPlugins.catppuccin
+    ];
+    extraConfig = ''
+      set-option -sa terminal-overrides ",xterm*:Tc"
+
+      unbind C-b
+      set -g prefix C-Space
+      bind C-Space send-prefix
+
+      bind -n M-H previous-window
+      bind -n M-L next-window
+    '';
   };
+
   home.packages = with pkgs; [
     rustc
     cargo

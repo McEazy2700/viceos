@@ -49,6 +49,7 @@
 
 
   imports = [
+    ./modules/apps.nix
     ./modules/waybar.nix
     ./modules/dev.nix
     ./modules/yazi.nix

@@ -48,6 +48,7 @@
         };
         installPhase = "cp -r customize/nixos $out";
       };
+      configurationLimit = 3;
     };
   };
 
@@ -65,7 +66,7 @@
   time.timeZone = "Africa/Lagos";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_NG";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_NG";

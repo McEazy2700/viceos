@@ -10,8 +10,8 @@
     cursor.name = "Bibata-Modern-Ice";
     fonts = {
       monospace = {
-        package = pkgs.jetbrains-mono;
-        name = "JetbrainsMono Nerd Font";
+        package = pkgs.nerdfonts;
+        name = "Hasklug Nerd Font";
       };
 
       serif = {
