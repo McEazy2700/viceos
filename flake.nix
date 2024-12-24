@@ -22,7 +22,7 @@
       homeConfigurations = {
         vice = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ stylix.homeManagerModules.stylix ./home.nix ];
+          modules = [ stylix.homeManagerModules.stylix ./home.nix { nixpkgs.config.allowUnfree = true; } ];
         };
       };
     };
