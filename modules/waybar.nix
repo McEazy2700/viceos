@@ -18,8 +18,6 @@
     };
     style = ''
              * {
-               font-family: "JetBrainsMono Nerd Font";
-               font-size: 12pt;
                font-weight: bold;
                border-radius: 8px;
                transition-property: background-color;
@@ -45,7 +43,7 @@
                margin-left: 5px;
                margin-right: 5px;
                margin-top: 5px;
-               background-color: #1e1e2a;
+               background-color: #${config.lib.stylix.colors.base00};
                padding: 3px;
                padding-left:8px;
                border: 2px none #33ccff;

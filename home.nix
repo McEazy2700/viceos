@@ -50,10 +50,10 @@
 
   imports = [
     ./modules/apps.nix
+    ./modules/stylix.nix
     ./modules/waybar.nix
     ./modules/dev.nix
     ./modules/yazi.nix
-    ./modules/stylix.nix
     ./modules/hyprland.nix
   ];
 

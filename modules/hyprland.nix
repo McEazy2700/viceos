@@ -201,8 +201,7 @@
       ];
 
       input = {
-        kb_layout = "us,ru";
-        kb_options = "grp:caps_toggle";
+        kb_layout = "us";
         follow_mouse = 1;
         touchpad = {
           natural_scroll = true;
@@ -213,8 +212,9 @@
       decoration = {
         rounding = 10;
         blur = {
-          size = 3;
-          passes = 1;
+          enabled = true;
+          size = 10;
+          passes = 2;
           new_optimizations = true;
         };
         shadow = {

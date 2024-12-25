@@ -31,7 +31,7 @@
     # systemd-boot.enable = true;
     systemd-boot.enable = false;
     efi.canTouchEfiVariables = true;
-    timeout = 5;
+    timeout = 3;
     grub = {
       enable = true;
       devices = [ "nodev" ];
@@ -48,7 +48,7 @@
         };
         installPhase = "cp -r customize/nixos $out";
       };
-      configurationLimit = 3;
+      configurationLimit = 1;
     };
   };
 
