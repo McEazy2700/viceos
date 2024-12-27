@@ -17,6 +17,16 @@
     papirus-icon-theme
     font-awesome
     libsForQt5.breeze-icons
+
+    openssl
+    libuuid
+    gcc-unwrapped.lib
+    stdenv.cc.cc.lib
+    gcc
+    libgcc
+    gnumake
+    cmake
+    extra-cmake-modules
   ];
   gtk = {
     enable = true;
