@@ -12,7 +12,9 @@
     pamixer # Volume control
     networkmanager # Network management
     grim # Screenshot tool
-    slurp # Screen area selection
+    slurp # Select a region
+    wl-clipboard # Clipboard tool
+    swappy # Screenshot editor
   ];
 
   services.hypridle = {
@@ -94,7 +96,8 @@
         "$mainMod SHIFT, Q, killactive,"
         "$mainMod SHIFT, BACKSPACE, exec, ~/.config/rofi/powermenu/type-5/powermenu.sh"
         "$mainMod,       R, exec, $fileManager"
-        "$mainMod,       F, togglefloating,"
+        "$mainMod,       SPACE, togglefloating,"
+        "$mainMod,       F, fullscreen,"
         "$mainMod,       D, exec, /home/vice/.config/rofi/launchers/type-7/launcher.sh"
         "$mainMod,       P, pseudo,"
         "$mainMod,       J, togglesplit,"
@@ -106,6 +109,7 @@
         "$mainMod,       P, exec, hyprpicker -an"
         "$mainMod,       N, exec, swaync-client -t"
         ", Print, exec, grimblast --notify --freeze copysave area"
+        ''$mainMod SHIFT, S, exec, grim -g "$(slurp)" - | swappy -f -''
 
         # Moving focus
         "$mainMod, left, movefocus, l"
@@ -148,10 +152,6 @@
         "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
         "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
         "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
-
-        # Scratchpad
-        "$mainMod,       S, togglespecialworkspace,  magic"
-        "$mainMod SHIFT, S, movetoworkspace, special:magic"
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging

@@ -27,6 +27,7 @@ let
 in
 {
   home.packages = with pkgs; [
+    usbutils
     zen_browser
     vivaldi
     discord
