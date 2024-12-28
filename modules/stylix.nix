@@ -4,7 +4,7 @@
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
     enable = true;
     autoEnable = true;
-    image = ../Wallpapers/pain.jpg;
+    image = ../Wallpapers/rain.jpg;
     polarity = "dark";
     cursor.package = pkgs.bibata-cursors;
     cursor.name = "Bibata-Modern-Ice";
