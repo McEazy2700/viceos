@@ -61,12 +61,21 @@
     '';
   };
 
+  programs.poetry = {
+    enable = true;
+  };
+
+  programs.starship = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     rustc
     cargo
     rustfmt
     rust-analyzer
     clippy
+    pipx
     python312Full
     nodejs_20
     nodePackages.npm

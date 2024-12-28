@@ -18,7 +18,6 @@
     font-awesome
     libsForQt5.breeze-icons
 
-    openssl
     libuuid
     gcc-unwrapped.lib
     stdenv.cc.cc.lib

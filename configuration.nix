@@ -163,6 +163,8 @@
     wget
     ffmpeg
     gh
+    openssl
+    pkg-config
   ];
 
   programs.fish.enable = true;

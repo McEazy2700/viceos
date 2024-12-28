@@ -22,7 +22,6 @@ in
       ];
 
       buildInputs = with pkgs; [
-        openssl
         libuuid
         stdenv.cc.cc.lib
         gcc-unwrapped.lib
@@ -40,7 +39,7 @@ in
       '';
 
       dontStrip = true;
-      
+
       runtimeDependencies = buildInputs;
     })
   ];
