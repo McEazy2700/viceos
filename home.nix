@@ -65,6 +65,7 @@
     ./modules/yazi.nix
     ./modules/hyprland.nix
     ./modules/dfx.nix
+    ./modules/freeshow.nix
   ];
 
   # Let Home Manager install and manage itself.
