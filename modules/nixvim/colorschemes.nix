@@ -10,12 +10,15 @@
         custom_highlights = ''
           function(highlights)
             return {
-            CursorLineNr = { fg = highlights.peach, style = {} },
             NavicText = { fg = highlights.text },
-            }
+            SignColumn = { bg = highlights.peach },
+ 	    LineNr = { fg = highlights.rosewater },
+      	    CursorLineNr = { fg = highlights.peach, style = { "bold" } },
+      	    SignColumn = { bg = highlights.mantle },
+	    }
           end
         '';
-        flavour = "macchiato"; # "latte", "mocha", "frappe", "macchiato" or raw lua code
+        flavour = "mocha"; # "latte", "mocha", "frappe", "macchiato" or raw lua code
         no_bold = false;
         no_italic = false;
         no_underline = false;
