@@ -86,15 +86,6 @@ local plugins = {
   },
 
   {
-    "simrat39/rust-tools.nvim",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "nvim-lua/plenary.nvim",
-      "mfussenegger/nvim-dap",
-    },
-  },
-
-  {
     "zbirenbaum/extensions",
     config = function()
       vim.schedule_wrap(require("nvchad.terminal").init())

@@ -12,12 +12,12 @@ return {
   },
   {
     "kingavatar/nvchad-ui.nvim",
-    branch = "v3.0",
+    branch = "v2.0",
     lazy = false,
     config = function()
       require("nvchad_ui").setup {
         lazyVim = true,
-        -- theme_toggle = { "tokyonight", "rose-pine" },
+        theme_toggle = { "tokyonight", "rose-pine" },
         nvdash = { load_on_startup = true },
       }
     end,

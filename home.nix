@@ -30,7 +30,6 @@
     openssl
     openssl.dev
     pkg-config
-    llvmPackages.bintools
   ];
   gtk = {
     enable = true;
@@ -71,6 +70,7 @@
     ./modules/hyprland.nix
     ./modules/dfx.nix
     ./modules/freeshow.nix
+    ./modules/nixvim.nix
   ];
 
   # Let Home Manager install and manage itself.

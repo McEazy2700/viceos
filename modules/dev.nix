@@ -1,16 +1,9 @@
 { config, pkgs, ... }:
 {
-  home.file = {
-    ".config/nvim".source = ../configs/nvim;
-  };
+  # home.file = {
+  #   ".config/nvim".source = ../configs/nvim;
+  # };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    plugins = with pkgs.vimPlugins; [
-      lazy-nvim
-    ];
-  };
   programs.kitty = {
     enable = true;
     shellIntegration.enableFishIntegration = true;
@@ -73,7 +66,6 @@
     rustc
     cargo
     rustfmt
-    rust-analyzer
     clippy
     pipx
     python312Full

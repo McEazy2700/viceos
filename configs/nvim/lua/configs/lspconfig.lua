@@ -74,10 +74,9 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-local rt = require "rust-tools"
-rt.setup {
+vim.g.rustaceanvim = {
+  -- LSP configuration
   server = {
     on_attach = on_attach,
-    capabilities = nvlsp.capabilities,
   },
 }
