@@ -1,7 +1,7 @@
 {
   programs.nixvim = {
     enable = true;
-    imports = [ ./keymaps.nix ];
+    imports = [ ./keymaps.nix ./colorschemes.nix ];
     defaultEditor = true;
     globals = {
       mapleader = " ";
@@ -21,7 +21,6 @@
       cursorline = true;
       wrap = false;
     };
-    colorschemes.catppuccin.enable = true;
     plugins.undotree = {
       enable = true;
     };
