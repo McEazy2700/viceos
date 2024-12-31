@@ -1,4 +1,4 @@
-{ self, ... }: {
+{ ... }: {
   colorschemes = {
     catppuccin = {
       enable = true;
@@ -7,17 +7,17 @@
           light = "macchiato";
           dark = "mocha";
         };
-        custom_highlights = ''
-          function(highlights)
-            return {
-            NavicText = { fg = highlights.text },
-            SignColumn = { bg = highlights.peach },
- 	    LineNr = { fg = highlights.rosewater },
-      	    CursorLineNr = { fg = highlights.peach, style = { "bold" } },
-      	    SignColumn = { bg = highlights.mantle },
-	    }
-          end
-        '';
+
+	    #    custom_highlights = ''
+	    #      function(highlights)
+	    #        return {
+	    #        NavicText = { fg = highlights.text },
+	    #        SignColumn = { bg = highlights.peach },
+	    #  LineNr = { fg = highlights.rosewater },
+	    #  	    CursorLineNr = { fg = highlights.peach, style = { "bold" } },
+	    # }
+	    #      end
+	    #    '';
         flavour = "mocha"; # "latte", "mocha", "frappe", "macchiato" or raw lua code
         no_bold = false;
         no_italic = false;
