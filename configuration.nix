@@ -128,6 +128,7 @@
       clang
       unzip
       ripgrep
+      llvmPackages.bintools
     ];
   };
   users.defaultUserShell = pkgs.fish;
