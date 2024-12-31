@@ -70,7 +70,7 @@
     ./modules/hyprland.nix
     ./modules/dfx.nix
     ./modules/freeshow.nix
-    ./modules/nixvim.nix
+    ./modules/nixvim/default.nix
     ./modules/zenbrowser.nix
   ];
 

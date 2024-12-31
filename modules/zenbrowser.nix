@@ -20,8 +20,8 @@ let
         };
 
         icon = fetchurl {
-          url = "https://zen-browser.app/_astro/app-icon.B4cquOFH_TcmbB.webp";
-          hash = "sha256-XyNYThRXx7AB/ZKrjPYIDDjvJVEi7Pk8QWHskHk2qH8="; # You'll need to provide this
+          url = "https://docs.zen-browser.app/static/icon.png";
+          hash = "sha256-FXbh3eDdvROF6Z0bEAFxYr93LSz+c/Z0WcrCcsrauGI="; # You'll need to provide this
         };
 
         appimageContents = appimageTools.extractType2 { inherit name src; };

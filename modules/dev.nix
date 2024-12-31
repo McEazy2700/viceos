@@ -1,17 +1,5 @@
 { config, pkgs, ... }:
 {
-  # home.file = {
-  #   ".config/nvim".source = ../configs/nvim;
-  # };
-
-  # programs.neovim = {
-  #   enable = true;
-  #   plugins = with pkgs.vimPlugins; [
-  #     lazy-nvim
-  #     rustaceanvim
-  #   ];
-  # };
-
   programs.kitty = {
     enable = true;
     shellIntegration.enableFishIntegration = true;
