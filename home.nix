@@ -71,6 +71,7 @@
     ./modules/dfx.nix
     ./modules/freeshow.nix
     ./modules/nixvim.nix
+    ./modules/zenbrowser.nix
   ];
 
   # Let Home Manager install and manage itself.
