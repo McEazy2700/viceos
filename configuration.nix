@@ -128,7 +128,6 @@
       clang
       unzip
       ripgrep
-      llvmPackages.bintools
     ];
   };
   users.defaultUserShell = pkgs.fish;
@@ -164,8 +163,6 @@
     wget
     ffmpeg
     gh
-    openssl
-    pkg-config
   ];
 
   programs.fish.enable = true;

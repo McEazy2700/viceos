@@ -26,6 +26,11 @@
     gnumake
     cmake
     extra-cmake-modules
+
+    openssl
+    openssl.dev
+    pkg-config
+    llvmPackages.bintools
   ];
   gtk = {
     enable = true;
@@ -53,7 +58,7 @@
   };
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 
 
