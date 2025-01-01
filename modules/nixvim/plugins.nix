@@ -52,7 +52,14 @@
         };
       };
     };
-    treesitter.enable = true;
+    treesitter = {
+      enable = true;
+      settings = {
+        auto_install = true;
+        indent.enable = true;
+        highlight.enable = true;
+      };
+    };
     ts-autotag.enable = true;
     which-key = {
       enable = true;
@@ -83,14 +90,17 @@
       };
     };
     indent-blankline = {
-      enable = false;
+      enable = true;
       settings = {
         whitespace.remove_blankline_trail = false;
         indent = {
           char = "▎"; # "│" or "▎"
           tab_char = "│";
+          smart_indent_cap = true;
         };
-        scope.enabled = false;
+        scope = {
+          enabled = false;
+        };
         exclude = {
           buftypes = [ "terminal" "nofile" ];
           filetypes = [
