@@ -1,15 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
-{
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{ pkgs, ... }: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot = {
@@ -27,6 +23,10 @@
       "udev.log_priority=3" # Hides the cursor during boot
     ];
   };
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=alc285-hp
+    options snd-intel-dspcfg dsp_driver=1
+  '';
   boot.loader = {
     # systemd-boot.enable = true;
     systemd-boot.enable = false;
@@ -81,12 +81,23 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+  services = {
+    xserver = {
+      enable = true;
+      # Enable the GNOME Desktop Environment.
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
+  };
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  programs = {
+    gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+    firefox.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -107,6 +118,8 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
+    wireplumber.enable = true;
+    audio.enable = true;
   };
 
   # Enable XDG portal
@@ -119,22 +132,19 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.vice = {
-    isNormalUser = true;
-    description = "Ezekiel Victor";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      gcc
-      clang
-      unzip
-      ripgrep
-    ];
-  };
-  users.defaultUserShell = pkgs.fish;
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
+  users = {
+    users.vice = {
+      isNormalUser = true;
+      description = "Ezekiel Victor";
+      extraGroups = [ "networkmanager" "wheel" ];
+      packages = with pkgs; [
+        gcc
+        clang
+        unzip
+        ripgrep
+      ];
+    };
+    defaultUserShell = pkgs.fish;
   };
 
   fonts.packages = with pkgs; [
@@ -150,9 +160,6 @@
     proggyfonts
   ];
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -163,6 +170,8 @@
     wget
     ffmpeg
     gh
+    pavucontrol
+    alsa-utils
   ];
 
   programs.fish.enable = true;

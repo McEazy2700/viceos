@@ -1,6 +1,8 @@
-{ config, pkgs, inputs, ... }:
-
-{
+{ config
+, pkgs
+, inputs
+, ...
+}: {
   home.username = "vice";
   home.homeDirectory = "/home/vice";
 
@@ -59,7 +61,6 @@
   home.sessionVariables = {
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
-
 
   imports = [
     ./modules/apps.nix
