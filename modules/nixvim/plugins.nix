@@ -1,8 +1,7 @@
 { ... }: {
   plugins = {
-    lspsaga = {
-      enable = true;
-    };
+    lspsaga.enable = true;
+    transparent.enable = true;
     telescope = {
       enable = true;
       highlightTheme = "catppuccin-mocha";
@@ -68,6 +67,7 @@
     rustaceanvim.enable = true;
     lsp = {
       enable = true;
+      inlayHints = true;
       servers = {
         eslint.enable = true;
         emmet_ls.enable = true;
@@ -261,8 +261,8 @@
       options = {
         component_separators = "";
         section_separators = {
-          left = "";
-          right = "";
+          left = "";
+          right = "";
         };
       };
     };

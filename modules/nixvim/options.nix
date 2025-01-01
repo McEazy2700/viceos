@@ -36,15 +36,15 @@
     timeoutlen = 300;
     undofile = true;
     updatetime = 300;
-    wrap = true;
+    wrap = false;
   };
   performance = {
     byteCompileLua.enable = true;
-    combinePlugins.enable = false;
+    combinePlugins.enable = true;
   };
   globals = {
     mapleader = " ";
-    signcolumn = "yes";
+    transparent_enabled = true;
   };
 
   editorconfig.enable = true;
@@ -56,8 +56,33 @@
       command = "silent! lua vim.highlight.on_yank()";
     }
     {
-      event = [ "VimEnter" "BufEnter" ];
-      command = "colorscheme catppuccin-mocha";
+      event = [ "VimEnter" ];
+      command = "colorscheme tokyonight";
+    }
+    {
+      event = [ "VimEnter" ];
+      callback = {
+        __raw = ''
+          function()
+              require("transparent").clear_prefix("BufferLine")  -- For BufferLine
+              require("transparent").clear_prefix("NeoTree")      -- For NeoTree
+              require("transparent").clear_prefix("Telescope")     -- For Telescope
+              require("transparent").clear_prefix("LspDiagnostics") -- For LSP diagnostics
+              require("transparent").clear_prefix("Toggle") -- For LSP diagnostics
+              require("transparent").clear_prefix("Saga") -- For LSP diagnostics
+              require("transparent").clear_prefix("Cmp") -- For LSP diagnostics
+              require("transparent").clear_prefix("Pmenu")       -- For popup menus
+              require("transparent").clear_prefix("Float")       -- For floating windows
+              require("transparent").clear_prefix("Normal")      -- For normal text
+              require("transparent").clear_prefix("NonText")     -- For special characters
+              require("transparent").clear_prefix("WhichKey")    -- For WhichKey plugin
+              require("transparent").clear_prefix("SignColumn")  -- For sign column
+              require("transparent").clear_prefix("StatusLine")  -- For status line
+              require("transparent").clear_prefix("FoldColumn")
+              require("transparent").clear_prefix("LspInlayHint")
+          end
+        '';
+      };
     }
     {
       event = [ "VimEnter" ];
