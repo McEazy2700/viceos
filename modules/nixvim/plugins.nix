@@ -83,7 +83,7 @@
       };
     };
     indent-blankline = {
-      enable = true;
+      enable = false;
       settings = {
         whitespace.remove_blankline_trail = false;
         indent = {
