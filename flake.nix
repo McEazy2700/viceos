@@ -10,9 +10,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs, stylix, nixvim, home-manager, ... }:
+  outputs =
+    { nixpkgs
+    , stylix
+    , nixvim
+    , home-manager
+    , ...
+    }:
     let
-      lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in

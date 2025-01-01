@@ -1,12 +1,72 @@
-{...}: {
-    plugins.telescope = {
+{ ... }: {
+  plugins = {
+    lspsaga = {
+      enable = true;
+    };
+    telescope = {
       enable = true;
       highlightTheme = "catppuccin-mocha";
+      settings = {
+        defaults = {
+          file_ignore_patterns = [
+            "^.git/"
+            "^.mypy_cache/"
+            "^__pycache__/"
+            "^output/"
+            "^data/"
+            "%.ipynb"
+            "%.lock"
+          ];
+          layout_config = {
+            prompt_position = "top";
+          };
+          selection_caret = "  ";
+          set_env = {
+            COLORTERM = "truecolor";
+          };
+          sorting_strategy = "ascending";
+        };
+      };
+      extensions = {
+        frecency.enable = true;
+        file-browser.enable = true;
+        media-files = {
+          enable = true;
+          settings = {
+            filetypes = [
+              "png"
+              "jpg"
+              "gif"
+              "mp4"
+              "webm"
+              "pdf"
+            ];
+            find_cmd = "rg";
+          };
+          dependencies = {
+            chafa.enable = true;
+            epub-thumbnailer.enable = true;
+            ffmpegthumbnailer.enable = true;
+            imageMagick.enable = true;
+            pdftoppm.enable = true;
+          };
+        };
+      };
     };
-    plugins.treesitter.enable = true;
-    plugins.ts-autotag.enable = true;
-    plugins.nvim-autopairs.enable = true;
-    plugins.lsp = {
+    treesitter.enable = true;
+    ts-autotag.enable = true;
+    which-key = {
+      enable = true;
+      settings = {
+        win = {
+          border = "rounded";
+        };
+      };
+    };
+    nvim-autopairs.enable = true;
+    lsp-format.enable = true;
+    rustaceanvim.enable = true;
+    lsp = {
       enable = true;
       servers = {
         eslint.enable = true;
@@ -22,83 +82,263 @@
         docker_compose_language_service.enable = true;
       };
     };
-    plugins.rustaceanvim.enable = true;
-    plugins.cmp = {
-      autoEnableSources = true;
-      settings = {
-        sources = [
-          { name = "nvim_lsp"; }
-          { name = "luasnip"; }
-          { name = "path"; }
-          { name = "buffer"; }
-        ];
-        mapping = {
-          __raw = ''
-            cmp.mapping.preset.insert({
-              ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-              ['<C-f>'] = cmp.mapping.scroll_docs(4),
-              ['<C-Space>'] = cmp.mapping.complete(),
-              ['<C-e>'] = cmp.mapping.abort(),
-              ['<CR>'] = cmp.mapping.confirm({ select = true }),
-            })
-          '';
-        };
-        snippet = {
-          expand = "function(args) require('luasnip').lsp_expand(args.body) end";
-        };
-      };
-    };
-    plugins.undotree.enable = true;
-    plugins.toggleterm = {
+    indent-blankline = {
       enable = true;
       settings = {
-        direction = "float";
-        float_opts = {
-          border = "curved";
-          height = ''
-            function()
-                  return math.floor(vim.o.lines * 0.8)
-                end
-          '';
-          width = ''
-            function()
-                  return math.floor(vim.o.columns * 0.9)
-                end
-          '';
+        whitespace.remove_blankline_trail = false;
+        indent = {
+          char = "▎"; # "│" or "▎"
+          tab_char = "│";
         };
-      };
-    };
-    plugins.bufferline = {
-      enable = true;
-      settings = {
-        options = {
-          diagnostics = "nvim_lsp";
-          indicator.style = "underline";
-          offsets = [
-            {
-              filetype = "neo-tree";
-              highlight = "Directory";
-              text = "File Explorer";
-              text_align = "center";
-            }
+        scope.enabled = false;
+        exclude = {
+          buftypes = [ "terminal" "nofile" ];
+          filetypes = [
+            "help"
+            "alpha"
+            "dashboard"
+            "neo-tree"
+            "Trouble"
+            "trouble"
+            "lazy"
+            "mason"
+            "notify"
+            "toggleterm"
+            "lazyterm"
           ];
         };
       };
     };
-    plugins.web-devicons.enable = true;
-    plugins.neo-tree = {
+    snacks = {
       enable = true;
-      autoCleanAfterSessionRestore = true;
-      closeIfLastWindow = true;
-      popupBorderStyle = "rounded";
-    };
-    plugins.lualine = {
-      enable = true;
+
       settings = {
-        options = {
-          component_separators = "";
-          section_separators = { left = ""; right = ""; };
+        bigfile.enable = true;
+        dashboard.enable = true;
+        indent.enable = true;
+        input.enable = true;
+        notifier.enable = true;
+        quickfile.enable = true;
+        scroll.enable = true;
+        statuscolumn.enable = true;
+        words.enable = true;
+        gitbrowse.enabled = true;
+        lazygit.enabled = true;
+        profiler.enabled = true;
+      };
+    };
+  };
+  plugins.none-ls = {
+    enable = true;
+    enableLspFormat = true;
+    settings = {
+      border = "rounded"; # Rounded borders for :NullLsInfo window
+      cmd = [ "nvim" ];
+    };
+    sources = {
+      code_actions = {
+        statix.enable = true;
+      };
+      diagnostics = {
+        statix.enable = true;
+        deadnix.enable = true;
+        pylint.enable = true;
+        checkstyle.enable = true;
+      };
+      formatting = {
+        alejandra.enable = true;
+        stylua.enable = true;
+        shfmt.enable = true;
+        nixpkgs_fmt.enable = true;
+        prettier = {
+          enable = true;
+          disableTsServerFormatter = true;
+        };
+        black.enable = true;
+      };
+
+      completion = {
+        luasnip.enable = true;
+        vsnip.enable = true;
+        spell.enable = true;
+        tags.enable = true;
+      };
+    };
+  };
+  plugins.lazygit.enable = true;
+  plugins.lint = {
+    enable = true;
+    lintersByFt = {
+      text = [ "vale" ];
+      json = [ "jsonlint" ];
+      markdown = [ "vale" ];
+      rst = [ "vale" ];
+      ruby = [ "ruby" ];
+      janet = [ "janet" ];
+      inko = [ "inko" ];
+      clojure = [ "clj-kondo" ];
+      dockerfile = [ "hadolint" ];
+      terraform = [ "tflint" ];
+    };
+  };
+  plugins.trouble.enable = true;
+  plugins.friendly-snippets.enable = true;
+  plugins.luasnip = {
+    enable = true;
+    settings = {
+      enable_autosnippets = true;
+      store_selection_keys = "<Tab>";
+    };
+  };
+  plugins.undotree.enable = true;
+  plugins.toggleterm = {
+    enable = true;
+    settings = {
+      direction = "float";
+      float_opts = {
+        border = "curved";
+        height = ''
+          function()
+                return math.floor(vim.o.lines * 0.8)
+              end
+        '';
+        width = ''
+          function()
+                return math.floor(vim.o.columns * 0.9)
+              end
+        '';
+      };
+    };
+  };
+  # Even more snippets
+  plugins.nvim-snippets = {
+    enable = false;
+    settings = {
+      create_autocmd = true;
+      create_cmp_source = true;
+      extended_filetypes = {
+        typescript = [
+          "javascript"
+        ];
+      };
+      friendly_snippets = true;
+    };
+  };
+  plugins.bufferline = {
+    enable = true;
+    settings = {
+      options = {
+        indicator = {
+          icon = "▎ ";
+          style = "icon";
+        };
+        diagnostics = "nvim_lsp";
+        offsets = [
+          {
+            filetype = "neo-tree";
+            highlight = "Directory";
+            text = "File Explorer";
+            text_align = "center";
+          }
+        ];
+      };
+    };
+  };
+  plugins.web-devicons.enable = true;
+  plugins.neo-tree = {
+    enable = true;
+    buffers = {
+      followCurrentFile.enabled = true;
+      followCurrentFile.leaveDirsOpen = true;
+    };
+    autoCleanAfterSessionRestore = true;
+    closeIfLastWindow = true;
+    popupBorderStyle = "rounded";
+  };
+  plugins.lualine = {
+    enable = true;
+    settings = {
+      options = {
+        component_separators = "";
+        section_separators = {
+          left = "";
+          right = "";
         };
       };
     };
+  };
+
+  plugins.cmp = {
+    enable = true;
+    settings = {
+      completion = {
+        completeopt = "menu,menuone,noinsert";
+      };
+      autoEnableSources = true;
+      experimental = { ghost_text = true; };
+      performance = {
+        debounce = 60;
+        fetchingTimeout = 200;
+        maxViewEntries = 30;
+      };
+      snippet = {
+        expand = ''
+          function(args)
+            require('luasnip').lsp_expand(args.body)
+          end
+        '';
+      };
+      formatting = { fields = [ "kind" "abbr" "menu" ]; };
+      sources = [
+        { name = "nvim_lsp"; }
+        { name = "emoji"; }
+        {
+          name = "buffer"; # text within current buffer
+          option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
+          keywordLength = 3;
+        }
+        # { name = "copilot"; } # enable/disable copilot
+        {
+          name = "path"; # file system paths
+          keywordLength = 3;
+        }
+        {
+          name = "luasnip"; # snippets
+          keywordLength = 3;
+        }
+      ];
+
+      window = {
+        completion = { border = "rounded"; };
+        documentation = { border = "rounded"; };
+      };
+
+      mapping = {
+        "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+        "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+        "<C-j>" = "cmp.mapping.select_next_item()";
+        "<C-k>" = "cmp.mapping.select_prev_item()";
+        "<C-e>" = "cmp.mapping.abort()";
+        "<C-b>" = "cmp.mapping.scroll_docs(-4)";
+        "<C-f>" = "cmp.mapping.scroll_docs(4)";
+        "<C-Space>" = "cmp.mapping.complete()";
+        "<CR>" = "cmp.mapping.confirm({ select = true })";
+        "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
+        "<C-l>" = ''
+          cmp.mapping(function()
+            if luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            end
+          end, { 'i', 's' })
+        '';
+        "<C-h>" = ''
+          cmp.mapping(function()
+            if luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
+            end
+          end, { 'i', 's' })
+        '';
+      };
+    };
+  };
 }
