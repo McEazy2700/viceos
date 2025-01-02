@@ -7,6 +7,7 @@
     ffmpegthumbnailer
     poppler
     imagemagick
+    inkscape
   ];
   programs = {
     mpv.enable = true;
