@@ -169,9 +169,9 @@
 
       completion = {
         luasnip.enable = true;
-        vsnip.enable = true;
-        spell.enable = true;
-        tags.enable = true;
+        # vsnip.enable = true;
+        # spell.enable = true;
+        # tags.enable = true;
       };
     };
   };

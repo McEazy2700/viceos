@@ -27,8 +27,8 @@
     numberwidth = 4;
     pumheight = 0;
     relativenumber = true;
-    shiftwidth = 4;
-    tabstop = 4;
+    shiftwidth = 2;
+    tabstop = 2;
     showtabline = 1;
     signcolumn = "no";
     smartcase = true;

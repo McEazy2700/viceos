@@ -117,6 +117,13 @@
       };
     }
     {
+      action = "<cmd> lua vim.lsp.buf.format() <cr>";
+      key = "<leader>lf";
+      options = {
+        desc = "Lsp Format";
+      };
+    }
+    {
       action = "<cmd> Lspsaga rename <cr>";
       key = "<leader>lr";
       options = {
