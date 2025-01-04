@@ -14,6 +14,7 @@
       themePackages = [ pkgs.adi1090x-plymouth-themes ]; # Replace with your theme package
       theme = "ironman";
     };
+    initrd.systemd.enable = true;
     consoleLogLevel = 0; # Reduces kernel output during boot
     kernelParams = [
       "quiet"
