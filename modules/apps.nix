@@ -8,6 +8,7 @@
     poppler
     imagemagick
     inkscape
+    pciutils
   ];
   programs = {
     mpv.enable = true;

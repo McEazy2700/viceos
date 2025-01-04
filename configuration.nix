@@ -21,9 +21,11 @@
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3" # Hides the cursor during boot
+      "snd_hda_intel.dmic_detect=0"
+      "snd_intel_dspcfg.dsp_driver=1"
     ];
   };
-
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader = {
     # systemd-boot.enable = true;
     systemd-boot.enable = false;
@@ -34,11 +36,16 @@
       devices = [ "nodev" ];
       efiSupport = true;
       useOSProber = true;
-      theme = pkgs.fetchFromGitHub {
-        owner = "xenlism";
-        repo = "Grub-themes";
-        rev = "40ac048df9aacfc053c515b97fcd24af1a06762f";
-        hash = "sha256-ProTKsFocIxWAFbYgQ46A+GVZ7mUHXxZrvdiPJqZJ6I=";
+      theme = pkgs.stdenv.mkDerivation {
+        pname = "distro-grub-themes";
+        version = "3.1";
+        src = pkgs.fetchFromGitHub {
+          owner = "AdisonCavani";
+          repo = "distro-grub-themes";
+          rev = "v3.1";
+          hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+        };
+        installPhase = "cp -r customize/nixos $out";
       };
       configurationLimit = 1;
     };
@@ -102,6 +109,7 @@
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+  hardware.enableAllFirmware = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -163,6 +171,7 @@
     ffmpeg
     gh
     pavucontrol
+    pamixer
     alsa-utils
   ];
 
