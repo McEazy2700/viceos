@@ -65,7 +65,7 @@
         __raw = ''
           function()
               require("transparent").clear_prefix("BufferLine")  -- For BufferLine
-              require("transparent").clear_prefix("NeoTree")      -- For NeoTree
+              require("transparent").clear_prefix("NvimTree")      -- For NvimTree
               require("transparent").clear_prefix("Telescope")     -- For Telescope
               require("transparent").clear_prefix("LspDiagnostics") -- For LSP diagnostics
               require("transparent").clear_prefix("Toggle") -- For LSP diagnostics
@@ -73,6 +73,7 @@
               require("transparent").clear_prefix("Cmp") -- For LSP diagnostics
               require("transparent").clear_prefix("Pmenu")       -- For popup menus
               require("transparent").clear_prefix("Float")       -- For floating windows
+              require("transparent").clear_prefix("Lsp")       -- For Lsp
               -- require("transparent").clear_prefix("Normal")      -- For normal text
               require("transparent").clear_prefix("NonText")     -- For special characters
               require("transparent").clear_prefix("WhichKey")    -- For WhichKey plugin
@@ -84,10 +85,6 @@
           end
         '';
       };
-    }
-    {
-      event = [ "VimEnter" ];
-      command = "Telescope oldfiles";
     }
   ];
 }

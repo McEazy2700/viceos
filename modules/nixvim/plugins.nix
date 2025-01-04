@@ -107,7 +107,7 @@
             "help"
             "alpha"
             "dashboard"
-            "neo-tree"
+            "NvimTree"
             "Trouble"
             "trouble"
             "lazy"
@@ -245,7 +245,7 @@
         diagnostics = "nvim_lsp";
         offsets = [
           {
-            filetype = "neo-tree";
+            filetype = "NvimTree";
             highlight = "Directory";
             text = "File Explorer";
             text_align = "center";
@@ -255,15 +255,12 @@
     };
   };
   plugins.web-devicons.enable = true;
-  plugins.neo-tree = {
+  plugins.nvim-tree = {
     enable = true;
-    buffers = {
-      followCurrentFile.enabled = true;
-      followCurrentFile.leaveDirsOpen = true;
-    };
-    autoCleanAfterSessionRestore = true;
-    closeIfLastWindow = true;
-    popupBorderStyle = "rounded";
+    hijackCursor = true;
+    openOnSetup = true;
+    hijackUnnamedBufferWhenOpening = true;
+    updateFocusedFile.enable = true;
   };
   plugins.lualine = {
     enable = true;
