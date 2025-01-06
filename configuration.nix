@@ -160,7 +160,13 @@
     dina-font
     proggyfonts
   ];
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -175,7 +181,10 @@
     pavucontrol
     pamixer
     alsa-utils
-    docker-client
+    podman
+    podman-tui
+    podman-compose
+    podman-desktop
   ];
 
   programs.fish.enable = true;

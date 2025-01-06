@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }: {
+{ config
+, lib
+, pkgs
+, ...
+}: {
   home.packages = with pkgs; [
     wl-clipboard # Clipboard manager
     waybar # Status bar
@@ -90,18 +94,17 @@
       }
     '';
     settings = {
-
       bind = [
         "$mainMod, Return, exec, $terminal"
         "$mainMod SHIFT, Q, killactive,"
         "$mainMod SHIFT, BACKSPACE, exec, ~/.config/rofi/powermenu/type-5/powermenu.sh"
         "$mainMod,       R, exec, $fileManager"
+        "$mainMod,       E, exec, nautilus"
         "$mainMod,       SPACE, togglefloating,"
         "$mainMod,       F, fullscreen,"
         "$mainMod,       D, exec, /home/vice/.config/rofi/launchers/type-7/launcher.sh"
         "$mainMod,       P, pseudo,"
         "$mainMod,       J, togglesplit,"
-        "$mainMod,       E, exec, bemoji -cn"
         "$mainMod,       V, exec, cliphist list | $menu --dmenu | cliphist decode | wl-copy"
         "$mainMod,       B, exec, pkill -SIGUSR2 waybar"
         "$mainMod SHIFT, B, exec, pkill -SIGUSR1 waybar"
@@ -270,6 +273,5 @@
         "nofocus, class:^(xwaylandvideobridge)$"
       ];
     };
-
   };
 }
