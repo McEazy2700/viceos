@@ -259,7 +259,6 @@
     enable = true;
     hijackCursor = true;
     openOnSetup = true;
-    hijackUnnamedBufferWhenOpening = true;
     updateFocusedFile.enable = true;
   };
   plugins.lualine = {
