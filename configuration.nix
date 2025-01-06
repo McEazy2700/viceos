@@ -137,7 +137,7 @@
     users.vice = {
       isNormalUser = true;
       description = "Ezekiel Victor";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
       packages = with pkgs; [
         gcc
         clang
@@ -160,6 +160,7 @@
     dina-font
     proggyfonts
   ];
+  virtualisation.docker.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
