@@ -69,6 +69,6 @@
     nodePackages.npm
     nodePackages.pnpm
     pipenv
-    (import ./google-cloud-cli.nix)
+    (import ./google-cloud-cli.nix { inherit pkgs; })
   ];
 }

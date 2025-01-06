@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs }:
 pkgs.stdenv.mkDerivation {
   pname = "google-cloud-cli";
   version = "latest";
@@ -17,6 +17,6 @@ pkgs.stdenv.mkDerivation {
     description = "Google Cloud SDK";
     homepage = "https://cloud.google.com/sdk";
     license = licenses.asl20;
-    maintainers = [ ]; # Add yourself here if you want
+    maintainers = [ ]; # Add yourself here if desired.
   };
 }
