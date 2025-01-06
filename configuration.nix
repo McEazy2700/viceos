@@ -185,6 +185,7 @@
     podman-tui
     podman-compose
     podman-desktop
+    qemu_full
   ];
 
   programs.fish.enable = true;
