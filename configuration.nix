@@ -175,6 +175,7 @@
     pavucontrol
     pamixer
     alsa-utils
+    docker-client
   ];
 
   programs.fish.enable = true;
