@@ -1,32 +1,32 @@
-{ config, pkgs, ... }:
-{
-  programs.kitty = {
-    enable = true;
-    shellIntegration.enableFishIntegration = true;
-    extraConfig = ''
-      background_opacity 0.9
-      background_blur 4
-    '';
-  };
-  programs.git = {
-    enable = true;
-    userName = "McEazy2700";
-    userEmail = "codeepoch@gmail.com";
-    extraConfig.init.defaultBranch = "main";
-    aliases = {
-      st = "status";
-      ci = "commit";
-      co = "checkout";
-      br = "branch";
-      unstage = "reset HEAD --";
-      last = "log -1 HEAD";
+{ pkgs, ... }: {
+  programs = {
+    kitty = {
+      enable = true;
+      shellIntegration.enableFishIntegration = true;
+      extraConfig = ''
+        background_opacity 0.9
+        background_blur 4
+      '';
     };
-  };
-
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      tmux = "tmux -u";
+    git = {
+      enable = true;
+      userName = "McEazy2700";
+      userEmail = "codeepoch@gmail.com";
+      extraConfig.init.defaultBranch = "main";
+      aliases = {
+        st = "status";
+        ci = "commit";
+        co = "checkout";
+        br = "branch";
+        unstage = "reset HEAD --";
+        last = "log -1 HEAD";
+      };
+    };
+    fish = {
+      enable = true;
+      shellAliases = {
+        tmux = "tmux -u";
+      };
     };
   };
 
@@ -64,9 +64,11 @@
     rustfmt
     clippy
     pipx
-    python312Full
+    python310Full
     nodejs_20
     nodePackages.npm
     nodePackages.pnpm
+    pipenv
+    (import ./google-cloud-cli.nix)
   ];
 }
