@@ -137,7 +137,7 @@
     users.vice = {
       isNormalUser = true;
       description = "Ezekiel Victor";
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" ];
       packages = with pkgs; [
         gcc
         clang
