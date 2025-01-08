@@ -33,9 +33,10 @@
     signcolumn = "no";
     smartcase = true;
     termguicolors = true;
-    timeoutlen = 300;
     undofile = true;
-    updatetime = 300;
+    updatetime = 100;
+    timeoutlen = 300;
+    lazyredraw = true; # Don't redraw while executing macros
     wrap = false;
   };
   performance = {
@@ -45,6 +46,10 @@
   globals = {
     mapleader = " ";
     transparent_enabled = true;
+    loaded_python_provider = 0;
+    loaded_ruby_provider = 0;
+    loaded_node_provider = 0;
+    loaded_perl_provider = 0;
   };
 
   editorconfig.enable = true;

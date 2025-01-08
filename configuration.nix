@@ -7,6 +7,13 @@
     ./hardware-configuration.nix
   ];
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
+  powerManagement.cpuFreqGovernor = "performance";
+
   # Bootloader.
   boot = {
     plymouth = {
