@@ -70,5 +70,7 @@
     nodePackages.pnpm
     pipenv
     (import ./google-cloud-cli.nix { inherit pkgs; })
+    postgresql
+    pgcli
   ];
 }

@@ -88,6 +88,15 @@
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
     };
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql;
+      enableTCPIP = true;
+      authentication = pkgs.lib.mkOverride 10 ''
+        local all all trust
+        host all all 127.0.0.1/32 trust
+      '';
+    };
   };
 
   programs = {
