@@ -26,6 +26,9 @@
       "snd_intel_dspcfg.dsp_driver=1"
     ];
   };
+  environment.variables = {
+    PATH = [ "$HOME/.cargo/bin" ];
+  };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader = {
     # systemd-boot.enable = true;
