@@ -79,7 +79,7 @@
         eslint.enable = true;
         emmet_ls.enable = true;
         nixd.enable = true;
-        pyright.enable = true;
+        basedpyright.enable = true;
         tailwindcss.enable = true;
         ts_ls.enable = true;
         cssls.enable = true;

@@ -50,27 +50,51 @@
     '';
   };
 
-  programs.poetry = {
-    enable = true;
-  };
-
   programs.starship = {
     enable = true;
   };
 
   home.packages = with pkgs; [
-    rustc
-    cargo
-    rustfmt
-    clippy
+    (import ./google-cloud-cli.nix { inherit pkgs; })
+    pgcli
+
+    # Python
     pipx
     python310Full
-    nodejs_20
-    nodePackages.npm
-    nodePackages.pnpm
+    python3Packages.pip
+    python3Packages.poetry-core
+    black
+    pylint
+    python3Packages.pytest
+    libffi
+    pkg-config
     pipenv
-    (import ./google-cloud-cli.nix { inherit pkgs; })
-    postgresql
-    pgcli
+
+    # Rust development tools
+    rust-bin.stable.latest.default
+    cargo-edit
+    cargo-watch
+    cargo-audit
+    openssl
+    openssl.dev
+
+    # Go development tools
+    go
+    gopls
+    delve
+    golangci-lint
+
+    # Node.js development tools
+    nodejs_20
+    yarn
+    nodePackages.pnpm
+    nodePackages.npm
+    nodePackages.typescript
+    nodePackages.typescript-language-server
   ];
+
+  home.sessionVariables = {
+    GOPATH = "$HOME/go";
+    CARGO_HOME = "$HOME/.cargo";
+  };
 }

@@ -1,10 +1,9 @@
-{ config
-, pkgs
-, inputs
-, ...
-}: {
-  home.username = "vice";
-  home.homeDirectory = "/home/vice";
+{ pkgs, ... }: {
+  home = {
+    username = "vice";
+    homeDirectory = "/home/vice";
+    stateVersion = "24.11"; # Please read the comment before changing.
+  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -13,7 +12,6 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
   home.packages = with pkgs; [
     pkgs.hello
     papirus-icon-theme
@@ -28,10 +26,6 @@
     gnumake
     cmake
     extra-cmake-modules
-
-    openssl
-    openssl.dev
-    pkg-config
   ];
   gtk = {
     enable = true;

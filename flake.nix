@@ -9,18 +9,26 @@
       url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { nixpkgs
     , stylix
     , nixvim
     , home-manager
+    , rust-overlay
     , ...
     }:
     let
       inherit (nixpkgs) lib;
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      overlays = [ (import rust-overlay) ];
+      pkgs = import nixpkgs {
+        inherit system overlays;
+      };
     in
     {
       nixosConfigurations = {
@@ -34,8 +42,8 @@
           inherit pkgs;
           modules = [
             stylix.homeManagerModules.stylix
-            ./home.nix
             { nixpkgs.config.allowUnfree = true; }
+            ./home.nix
             nixvim.homeManagerModules.nixvim
           ];
         };

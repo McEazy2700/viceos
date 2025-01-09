@@ -34,7 +34,7 @@
     ];
   };
   environment.variables = {
-    PATH = [ "$HOME/.cargo/bin" ];
+    PATH = [ "$HOME/.cargo/bin" "$HOME/.local/bin" ];
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader = {
@@ -101,6 +101,7 @@
     postgresql = {
       enable = true;
       package = pkgs.postgresql;
+      port = 5433;
       enableTCPIP = true;
       authentication = pkgs.lib.mkOverride 10 ''
         local all all trust
