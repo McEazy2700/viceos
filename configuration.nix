@@ -101,12 +101,15 @@
     postgresql = {
       enable = true;
       package = pkgs.postgresql;
-      port = 5433;
       enableTCPIP = true;
+      settings = {
+        listen_addresses = "*";
+      };
       authentication = pkgs.lib.mkOverride 10 ''
         local all all trust
         host all all 127.0.0.1/32 md5
         host all all ::1/128 md5
+        host all all 192.168.42.113/24 md5
       '';
     };
   };
