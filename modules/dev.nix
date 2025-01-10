@@ -26,6 +26,8 @@
       enable = true;
       shellAliases = {
         tmux = "tmux -u";
+        dev_job = "cd ~/Documents/dev/jobs && tmux new -s Jobs";
+        dev_learn = "cd ~/Documents/dev/learn && tmux new -s Learn";
       };
     };
   };
