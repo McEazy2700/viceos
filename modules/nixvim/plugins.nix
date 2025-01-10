@@ -80,7 +80,6 @@
         emmet_ls.enable = true;
         nixd.enable = true;
         basedpyright.enable = true;
-        golangci_lint_ls.enable = true;
         gopls.enable = true;
         tailwindcss.enable = true;
         ts_ls.enable = true;
