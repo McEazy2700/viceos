@@ -26,6 +26,9 @@
     gnumake
     cmake
     extra-cmake-modules
+
+    openssl
+    openssl.dev
   ];
   gtk = {
     enable = true;

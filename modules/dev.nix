@@ -77,8 +77,6 @@
     cargo-edit
     cargo-watch
     cargo-audit
-    openssl
-    openssl.dev
 
     # Go development tools
     go
