@@ -27,6 +27,11 @@
     cmake
     extra-cmake-modules
 
+    xorg.libX11
+    xorg.libXrandr
+    libxkbcommon
+    wayland
+    pkg-config
     openssl
     openssl.dev
   ];

@@ -70,7 +70,6 @@
     pylint
     python3Packages.pytest
     libffi
-    pkg-config
     pipenv
 
     # Rust development tools
