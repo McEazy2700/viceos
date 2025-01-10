@@ -50,7 +50,7 @@
           ];
         };
       };
-      devShells = {
+      devShells.${system} = {
         gio = pkgs.mkShell {
           buildInputs = with pkgs; [
             openssl
