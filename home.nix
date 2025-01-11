@@ -60,7 +60,18 @@
   };
 
   home.sessionVariables = {
-    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    PKG_CONFIG_PATH = "${pkgs.lib.makeSearchPath "lib/pkgconfig" [
+      pkgs.openssl.dev
+      pkgs.glib.dev
+      pkgs.gtk3.dev
+      pkgs.cairo.dev
+      pkgs.pango.dev
+      pkgs.harfbuzz.dev
+      pkgs.webkitgtk.dev
+      pkgs.atk.dev
+      pkgs.gdk-pixbuf.dev
+      pkgs.libsoup_3.dev
+    ]}";
   };
 
   imports = [

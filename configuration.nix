@@ -221,6 +221,9 @@
     libsoup_3
     pango
     webkitgtk
+    atk
+    gtk3-x11
+    gnome.adwaita-icon-theme
   ];
 
   programs.fish.enable = true;
