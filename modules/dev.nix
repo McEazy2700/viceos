@@ -103,7 +103,6 @@
     glib
     gtk3
     harfbuzz
-    librsvg
     libsoup_3
     pango
     webkitgtk_4_1
