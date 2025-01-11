@@ -31,7 +31,6 @@
     xorg.libXrandr
     libxkbcommon
     wayland
-    pkg-config
     openssl
     openssl.dev
   ];

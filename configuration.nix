@@ -208,6 +208,19 @@
     podman-compose
     podman-desktop
     qemu_full
+
+    pkg-config
+    # Tauri
+    at-spi2-atk
+    atkmm
+    cairo
+    gdk-pixbuf
+    glib
+    gtk3
+    harfbuzz
+    libsoup_3
+    pango
+    webkitgtk
   ];
 
   programs.fish.enable = true;

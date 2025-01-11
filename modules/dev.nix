@@ -94,18 +94,6 @@
     nodePackages.npm
     nodePackages.typescript
     nodePackages.typescript-language-server
-
-    # Tauri
-    at-spi2-atk
-    atkmm
-    cairo
-    gdk-pixbuf
-    glib
-    gtk3
-    harfbuzz
-    libsoup_3
-    pango
-    webkitgtk_4_1
   ];
 
   home.sessionVariables = {
