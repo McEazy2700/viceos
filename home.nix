@@ -33,6 +33,29 @@
     wayland
     openssl
     openssl.dev
+
+    # Tauri
+    zlib
+    zlib.dev
+    zlib.static
+    pkg-config
+    at-spi2-atk
+    atkmm
+    cairo
+    cairo.dev
+    gdk-pixbuf
+    gdk-pixbuf.dev
+    glib
+    gtk3
+    harfbuzz
+    libsoup_3
+    pango
+    librsvg.dev
+    webkitgtk_4_1
+    webkitgtk_4_1.dev
+    atk
+    gtk3-x11
+    adwaita-icon-theme
   ];
   gtk = {
     enable = true;
@@ -61,16 +84,29 @@
 
   home.sessionVariables = {
     PKG_CONFIG_PATH = "${pkgs.lib.makeSearchPath "lib/pkgconfig" [
+      pkgs.librsvg.dev
+      pkgs.gdk-pixbuf.dev
       pkgs.openssl.dev
       pkgs.glib.dev
       pkgs.gtk3.dev
       pkgs.cairo.dev
       pkgs.pango.dev
       pkgs.harfbuzz.dev
-      pkgs.webkitgtk.dev
+      pkgs.webkitgtk_4_1.dev
       pkgs.atk.dev
       pkgs.gdk-pixbuf.dev
       pkgs.libsoup_3.dev
+      pkgs.zlib.dev
+    ]}";
+
+    LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
+      pkgs.zlib
+      pkgs.zlib.dev
+    ]}";
+
+    LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
+      pkgs.zlib
+      pkgs.zlib.dev
     ]}";
   };
 

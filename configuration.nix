@@ -208,22 +208,6 @@
     podman-compose
     podman-desktop
     qemu_full
-
-    pkg-config
-    # Tauri
-    at-spi2-atk
-    atkmm
-    cairo
-    gdk-pixbuf
-    glib
-    gtk3
-    harfbuzz
-    libsoup_3
-    pango
-    webkitgtk_4_1
-    atk
-    gtk3-x11
-    gnome.adwaita-icon-theme
   ];
 
   programs.fish.enable = true;
