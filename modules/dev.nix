@@ -78,6 +78,8 @@
     cargo-edit
     cargo-watch
     cargo-audit
+    cargo-tauri
+    gobject-introspection
 
     # Go development tools
     go
@@ -92,6 +94,19 @@
     nodePackages.npm
     nodePackages.typescript
     nodePackages.typescript-language-server
+
+    # Tauri
+    at-spi2-atk
+    atkmm
+    cairo
+    gdk-pixbuf
+    glib
+    gtk3
+    harfbuzz
+    librsvg
+    libsoup_3
+    pango
+    webkitgtk_4_1
   ];
 
   home.sessionVariables = {
