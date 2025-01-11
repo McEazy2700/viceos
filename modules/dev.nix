@@ -74,7 +74,9 @@
     pipenv
 
     # Rust development tools
-    rust-bin.stable.latest.default
+    (rust-bin.stable.latest.default.override {
+      targets = [ "wasm32-unknown-unknown" ];
+    })
     cargo-edit
     cargo-watch
     cargo-audit
