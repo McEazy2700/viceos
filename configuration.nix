@@ -220,7 +220,7 @@
     harfbuzz
     libsoup_3
     pango
-    webkitgtk
+    webkitgtk_4_1
     atk
     gtk3-x11
     gnome.adwaita-icon-theme
