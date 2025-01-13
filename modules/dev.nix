@@ -67,11 +67,11 @@
     python310Full
     python3Packages.pip
     python3Packages.poetry-core
-    python310Packages.pipenv
     black
     pylint
     python3Packages.pytest
     libffi
+    postman
 
     # Rust development tools
     (rust-bin.stable.latest.default.override {
