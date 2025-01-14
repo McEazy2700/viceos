@@ -174,6 +174,8 @@
     nerdfonts
     noto-fonts
     noto-fonts-cjk-sans
+    cascadia-code
+    iosevka
     noto-fonts-emoji
     liberation_ttf
     fira-code

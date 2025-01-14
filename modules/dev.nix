@@ -1,4 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs
+, lib
+, ...
+}: {
   programs = {
     kitty = {
       enable = true;
@@ -32,6 +35,42 @@
         gio_shell = "nix develop ~/.dotfiles/nixos#gio && fish";
       };
     };
+    helix = {
+      enable = true;
+      settings = {
+        theme = lib.mkForce "ayu_dark";
+        editor = {
+          line-number = "relative";
+          bufferline = "multiple";
+        };
+        keys.normal = {
+          esc = [ "collapse_selection" "keep_primary_selection" ];
+          "[" = {
+            b = [ ":buffer-previous" ];
+          };
+          "]" = {
+            b = [ ":buffer-next" ];
+          };
+        };
+      };
+      languages = {
+        language-server = {
+          pylsp = {
+            config = {
+              documentFormatting = true;
+              pylsp = {
+                plugins = {
+                  black.enabled = true;
+                  pyls_mypy.enabled = true;
+                  rope.enabled = true;
+                  rope_autoimport.enabled = true;
+                };
+              };
+            };
+          };
+        };
+      };
+    };
   };
 
   programs.tmux = {
@@ -61,12 +100,18 @@
   home.packages = with pkgs; [
     (import ./google-cloud-cli.nix { inherit pkgs; })
     pgcli
+    ghostty
+    nixd
 
     # Python
     pipx
     python310Full
     python3Packages.pip
     python3Packages.poetry-core
+    python3Packages.python-lsp-server
+    python3Packages.pylsp-mypy
+    python3Packages.pylsp-rope
+    python3Packages.rope
     black
     pylint
     python3Packages.pytest

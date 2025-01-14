@@ -1,5 +1,4 @@
-{ config, inputs, pkgs, ... }:
-{
+{ pkgs, ... }: {
   stylix = {
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
     enable = true;
@@ -11,7 +10,7 @@
     fonts = {
       monospace = {
         package = pkgs.nerdfonts;
-        name = "Hasklug Nerd Font";
+        name = "Fira Code";
       };
 
       serif = {
