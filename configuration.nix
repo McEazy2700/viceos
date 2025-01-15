@@ -7,10 +7,10 @@
     ./hardware-configuration.nix
   ];
 
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-  };
+# zramSwap = {
+#   enable = true;
+#   algorithm = "zstd";
+# };
 
   powerManagement.cpuFreqGovernor = "performance";
 
@@ -22,16 +22,16 @@
       theme = "ironman";
     };
     initrd.systemd.enable = true;
-    consoleLogLevel = 0; # Reduces kernel output during boot
-    kernelParams = [
-      "quiet"
-      "splash"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3" # Hides the cursor during boot
-      "snd_hda_intel.dmic_detect=0"
-      "snd_intel_dspcfg.dsp_driver=1"
-    ];
+#   consoleLogLevel = 0; # Reduces kernel output during boot
+#   kernelParams = [
+#     "quiet"
+#     "splash"
+#     "rd.systemd.show_status=false"
+#     "rd.udev.log_level=3"
+#     "udev.log_priority=3" # Hides the cursor during boot
+#     "snd_hda_intel.dmic_detect=0"
+#     "snd_intel_dspcfg.dsp_driver=1"
+#    ];
   };
   environment.variables = {
     PATH = [ "$HOME/.cargo/bin" "$HOME/.local/bin" ];
@@ -160,11 +160,6 @@
       description = "Ezekiel Victor";
       extraGroups = [ "networkmanager" "wheel" ];
       packages = with pkgs; [
-        gcc
-        clang
-        unzip
-        ripgrep
-        bruno
       ];
     };
     defaultUserShell = pkgs.fish;
@@ -200,8 +195,14 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    gcc
+    clang
+    unzip
+    ripgrep
+    bruno
     ffmpeg
     gh
+    git
     pavucontrol
     pamixer
     alsa-utils
@@ -214,12 +215,7 @@
 
   programs.fish.enable = true;
   users.users.vice.shell = pkgs.fish;
-  #Garbage colector
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -247,6 +243,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

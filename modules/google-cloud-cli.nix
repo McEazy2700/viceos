@@ -5,7 +5,7 @@ pkgs.stdenv.mkDerivation {
 
   src = pkgs.fetchurl {
     url = "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz";
-    sha256 = "1fbw6py1nyr5zz0rrx1cwfpbxvl392kp6n9kpiwxlmjbhl4bnrnv"; # Replace this with the actual SHA256 hash of the tarball.
+    sha256 = "sha256-OCv/EPym9yVw0TipkDw+Sa06HrSI1UlDVgURNuOQanE="; # Replace this with the actual SHA256 hash of the tarball.
   };
 
   installPhase = ''

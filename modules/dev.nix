@@ -99,6 +99,7 @@
 
   home.packages = with pkgs; [
     (import ./google-cloud-cli.nix { inherit pkgs; })
+    slack
     pgcli
     ghostty
     nixd
@@ -112,6 +113,7 @@
     python3Packages.pylsp-mypy
     python3Packages.pylsp-rope
     python3Packages.rope
+    pyenv
     black
     pylint
     python3Packages.pytest
