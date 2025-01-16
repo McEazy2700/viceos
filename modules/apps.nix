@@ -9,6 +9,7 @@
     imagemagick
     inkscape
     pciutils
+    microsoft-edge
   ];
   programs = {
     mpv.enable = true;
