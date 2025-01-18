@@ -7,11 +7,6 @@
     ./hardware-configuration.nix
   ];
 
-# zramSwap = {
-#   enable = true;
-#   algorithm = "zstd";
-# };
-
   powerManagement.cpuFreqGovernor = "performance";
 
   # Bootloader.
@@ -22,16 +17,6 @@
       theme = "ironman";
     };
     initrd.systemd.enable = true;
-#   consoleLogLevel = 0; # Reduces kernel output during boot
-#   kernelParams = [
-#     "quiet"
-#     "splash"
-#     "rd.systemd.show_status=false"
-#     "rd.udev.log_level=3"
-#     "udev.log_priority=3" # Hides the cursor during boot
-#     "snd_hda_intel.dmic_detect=0"
-#     "snd_intel_dspcfg.dsp_driver=1"
-#    ];
   };
   environment.variables = {
     PATH = [ "$HOME/.cargo/bin" "$HOME/.local/bin" ];
@@ -58,7 +43,7 @@
         };
         installPhase = "cp -r customize/nixos $out";
       };
-      configurationLimit = 1;
+      configurationLimit = 10;
     };
   };
 

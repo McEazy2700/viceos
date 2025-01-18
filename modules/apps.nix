@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
+    microsoft-edge
     usbutils
     vivaldi
     discord
@@ -9,7 +10,6 @@
     imagemagick
     inkscape
     pciutils
-    microsoft-edge
   ];
   programs = {
     mpv.enable = true;
