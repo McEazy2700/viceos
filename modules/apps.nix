@@ -10,6 +10,7 @@
     imagemagick
     inkscape
     pciutils
+    atlas
   ];
   programs = {
     mpv.enable = true;
