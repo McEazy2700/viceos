@@ -11,6 +11,7 @@
     inkscape
     pciutils
     atlas
+    qimgv
   ];
   programs = {
     mpv.enable = true;
