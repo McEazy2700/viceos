@@ -35,6 +35,17 @@
         gio_shell = "nix develop ~/.dotfiles/nixos#gio && fish";
       };
     };
+    ghostty = {
+      enable = true;
+      settings = {
+        background-blur-radius = 20;
+        theme = "dark:catppuccin-mocha,light:catppuccin-latte";
+        window-theme = "dark";
+        background-opacity = 0.8;
+        minimum-contrast = 1.1;
+        window-decoration = false;
+      };
+    };
     helix = {
       enable = true;
       settings = {
@@ -101,7 +112,6 @@
     (import ./google-cloud-cli.nix { inherit pkgs; })
     slack
     pgcli
-    ghostty
     nixd
 
     # Python
