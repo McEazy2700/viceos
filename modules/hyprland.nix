@@ -1,8 +1,4 @@
-{ config
-, lib
-, pkgs
-, ...
-}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     wl-clipboard # Clipboard manager
     waybar # Status bar
@@ -194,7 +190,7 @@
       "$fileManager" = "$terminal -e sh -c 'yazi'";
       "$mainMod" = "SUPER";
       "$menu" = "wofi";
-      "$terminal" = "kitty";
+      "$terminal" = "ghostty";
       monitor = ",1920x1080@60,auto,1";
 
       exec-once = [
