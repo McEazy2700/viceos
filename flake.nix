@@ -12,6 +12,8 @@
       url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-python.url = "github:cachix/nixpkgs-python";
+    pyenv-nix-install.url = "github:sirno/pyenv-nix-install";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +25,6 @@
     , nixvim
     , home-manager
     , rust-overlay
-    , nvf
     , ...
     }:
     let
