@@ -44,6 +44,8 @@
         background-opacity = 0.8;
         minimum-contrast = 1.1;
         window-decoration = false;
+        confirm-close-surface = false;
+        font-family = "Iosevka Nerd Font";
       };
     };
     helix = {
