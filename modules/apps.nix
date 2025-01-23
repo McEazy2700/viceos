@@ -12,6 +12,7 @@
     pciutils
     atlas
     jq
+    fastfetch
     ccze
     grc
   ];
