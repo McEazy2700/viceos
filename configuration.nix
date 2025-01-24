@@ -196,6 +196,7 @@
     podman-compose
     podman-desktop
     qemu_full
+    fastfetch
   ];
 
   programs.fish.enable = true;

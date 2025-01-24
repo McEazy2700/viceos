@@ -2,7 +2,6 @@
   description = "Vice's NixOs";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.11";
-    gio-src.url = "sourcehut:~eliasnaur/gio";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -12,8 +11,6 @@
       url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-python.url = "github:cachix/nixpkgs-python";
-    pyenv-nix-install.url = "github:sirno/pyenv-nix-install";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,18 +47,6 @@
             { nixpkgs.config.allowUnfree = true; }
             ./home.nix
             nixvim.homeManagerModules.nixvim
-          ];
-        };
-      };
-      devShells.${system} = {
-        gio = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            openssl
-            openssl.dev
-            sqlite
-            gdbm
-            readline
-            libffi
           ];
         };
       };
