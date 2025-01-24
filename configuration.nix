@@ -21,7 +21,7 @@
   environment.variables = {
     PATH = [ "$HOME/.cargo/bin" "$HOME/.local/bin" ];
   };
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.loader = {
     # systemd-boot.enable = true;
     systemd-boot.enable = false;
@@ -196,7 +196,7 @@
     podman-compose
     podman-desktop
     qemu_full
-    neofetch
+    fastfetch
   ];
 
   programs.fish.enable = true;
