@@ -196,7 +196,7 @@
     podman-compose
     podman-desktop
     qemu_full
-    fastfetch
+    neofetch
   ];
 
   programs.fish.enable = true;
