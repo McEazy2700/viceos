@@ -19,7 +19,7 @@
     initrd.systemd.enable = true;
   };
   environment.variables = {
-    PATH = [ "$HOME/.cargo/bin" "$HOME/.local/bin" ];
+    PATH = [ "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/go/bin" ];
   };
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.loader = {
