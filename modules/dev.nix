@@ -119,6 +119,7 @@
     # Python
     pipx
     python310Full
+    python310Packages.pandas
     python3Packages.pip
     python3Packages.poetry-core
     python3Packages.python-lsp-server
@@ -147,6 +148,7 @@
     gopls
     delve
     golangci-lint
+    sqlc
 
     # Node.js development tools
     nodejs_20

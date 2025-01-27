@@ -16,6 +16,7 @@
     grc
   ];
   programs = {
+    cava.enable = true;
     mpv.enable = true;
     btop.enable = true;
     obs-studio = {

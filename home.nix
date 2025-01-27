@@ -107,6 +107,7 @@
     LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
       pkgs.zlib
       pkgs.zlib.dev
+      pkgs.stdenv.cc.cc.lib
     ]}";
   };
 
