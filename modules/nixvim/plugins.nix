@@ -83,7 +83,6 @@
         gopls.enable = true;
         tailwindcss.enable = true;
         ts_ls.enable = true;
-        sqls.enable = true;
         cssls.enable = true;
         svelte.enable = true;
         dockerls.enable = true;
