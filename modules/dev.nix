@@ -148,7 +148,6 @@
     gopls
     delve
     golangci-lint
-    sqlc
     go-migrate
 
     # Node.js development tools
