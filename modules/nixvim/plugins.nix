@@ -2,6 +2,7 @@
   plugins = {
     lspsaga.enable = true;
     transparent.enable = true;
+    gitsigns.enable = true;
     telescope = {
       enable = true;
       highlightTheme = "catppuccin-mocha";
