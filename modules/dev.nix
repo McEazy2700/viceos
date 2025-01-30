@@ -157,6 +157,7 @@
     nodePackages.npm
     nodePackages.typescript
     nodePackages.typescript-language-server
+    bash
   ];
 
   home.sessionVariables = {
