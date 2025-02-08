@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix/release-24.11";
     nvf = {
-      url = "github:notashelf/nvf";
+      url = "github:nix-community/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
@@ -24,8 +24,7 @@
     , stylix
     , nixvim
     , home-manager
-    , rust-overlay
-    , nvf
+    , rust-overlay, nvf
     , ...
     }:
     let
