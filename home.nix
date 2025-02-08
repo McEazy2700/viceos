@@ -121,6 +121,7 @@
     ./modules/dfx.nix
     ./modules/freeshow.nix
     ./modules/nixvim/default.nix
+    ./modules/nvf/default.nix
     ./modules/zenbrowser.nix
   ];
 

@@ -6,7 +6,10 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix/release-24.11";
-    nvf.url = "github:notashelf/nvf";
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +25,7 @@
     , nixvim
     , home-manager
     , rust-overlay
+    , nvf
     , ...
     }:
     let
@@ -43,6 +47,7 @@
         vice = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
+            nvf.homeManagerModules.default
             stylix.homeManagerModules.stylix
             { nixpkgs.config.allowUnfree = true; }
             ./home.nix
