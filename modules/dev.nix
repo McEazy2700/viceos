@@ -115,7 +115,7 @@
     slack
     pgcli
     nixd
-    google-cloud-cli
+    # google-cloud-cli
 
     # Python
     pipx
