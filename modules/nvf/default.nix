@@ -3,13 +3,47 @@
     enable = true;
     settings = {
       vim = {
+        options = {
+          softtabstop = 0;
+          expandtab = true;
+          smarttab = true;
+          autoindent = true;
+          backspace = "indent,eol,start";
+          backup = false;
+          cmdheight = 1;
+          completeopt = "menu,menuone,noselect";
+          conceallevel = 0;
+          cursorline = true;
+          foldcolumn = "1";
+          foldenable = true;
+          foldlevel = 5;
+          foldlevelstart = 99;
+          ignorecase = true;
+          laststatus = 3;
+          mouse = "a";
+          number = true;
+          numberwidth = 4;
+          pumheight = 0;
+          relativenumber = true;
+          shiftwidth = 2;
+          tabstop = 2;
+          showtabline = 1;
+          signcolumn = "no";
+          smartcase = true;
+          termguicolors = true;
+          undofile = true;
+          updatetime = 100;
+          timeoutlen = 300;
+          lazyredraw = true;
+          wrap = false;
+        };
         keymaps = [
           {
             key = "<leader>e";
             mode = "n";
             silent = true;
             desc = "Open Explorer";
-            action = "<cmd> Neotree toggle <cr>";
+            action = "<cmd> NvimTreeToggle <cr>";
           }
           {
             action = "<cmd> BufferLineCycleNext <cr>";
@@ -119,53 +153,36 @@
             mode = "n";
             silent = true;
           }
-          {
-            action = "<cmd> Lspsaga rename <cr>";
-            key = "<leader>lr";
-            desc = "Lsp Rename";
-            mode = "n";
-            silent = true;
-          }
-          {
-            action = "<cmd> Lspsaga hover_doc <cr>";
-            key = "K";
-            desc = "Hover documentation";
-            mode = "n";
-            silent = true;
-          }
-          {
-            action = "<cmd> Lspsaga code_action <cr>";
-            key = "<leader>la";
-            desc = "Code Action";
-            mode = "n";
-            silent = true;
-          }
-          {
-            key = "[d";
-            action = "<cmd> Lspsaga diagnostic_jump_prev <cr>";
-            desc = "Previous Diagnostic";
-            mode = "n";
-            silent = true;
-          }
-          {
-            key = "]d";
-            action = "<cmd> Lspsaga diagnostic_jump_next <cr>";
-            desc = "Next Diagnostic";
-            mode = "n";
-            silent = true;
-          }
         ];
-        ui.borders.enable = true;
-        vim.lsp.lspsaga.enable = true;
+        ui = {
+          borders = {
+            enable = true;
+            plugins = {
+              lsp-signature.enable = true;
+              nvim-cmp.enable = true;
+              which-key.enable = true;
+            };
+          };
+        };
 
         viAlias = false;
         vimAlias = true;
         enableLuaLoader = true;
+        useSystemClipboard = true;
+        visuals.indent-blankline.enable = true;
+        treesitter.context.enable = true;
         lsp = {
           enable = true;
           formatOnSave = true;
           lightbulb.enable = true;
           lspSignature.enable = true;
+          lspconfig.enable = true;
+          lspkind.enable = true;
+          lsplines.enable = true;
+          null-ls.enable = true;
+          nvim-docs-view.enable = true;
+          otter-nvim.enable = true;
+          trouble.enable = true;
         };
         statusline.lualine.enable = true;
         telescope.enable = true;
@@ -176,7 +193,10 @@
         comments.comment-nvim.enable = true;
         dashboard.alpha.enable = true;
         debugger.nvim-dap.enable = true;
-        filetree.neo-tree.enable = true;
+        filetree.nvimTree = {
+          enable = true;
+          setupOpts.update_focused_file.enable = true;
+        };
         git = {
           enable = true;
           gitsigns.enable = true;

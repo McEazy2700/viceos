@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix/release-24.11";
     nvf = {
-      url = "github:nix-community/neovim-flake";
+      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
@@ -19,40 +19,39 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs =
-    { nixpkgs
-    , stylix
-    , nixvim
-    , home-manager
-    , rust-overlay, nvf
-    , ...
-    }:
-    let
-      inherit (nixpkgs) lib;
-      system = "x86_64-linux";
-      overlays = [ (import rust-overlay) ];
-      pkgs = import nixpkgs {
-        inherit system overlays;
-      };
-    in
-    {
-      nixosConfigurations = {
-        nixos = lib.nixosSystem {
-          inherit system;
-          modules = [ ./configuration.nix ];
-        };
-      };
-      homeConfigurations = {
-        vice = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            nvf.homeManagerModules.default
-            stylix.homeManagerModules.stylix
-            { nixpkgs.config.allowUnfree = true; }
-            ./home.nix
-            nixvim.homeManagerModules.nixvim
-          ];
-        };
+  outputs = {
+    nixpkgs,
+    stylix,
+    nixvim,
+    home-manager,
+    rust-overlay,
+    nvf,
+    ...
+  }: let
+    inherit (nixpkgs) lib;
+    system = "x86_64-linux";
+    overlays = [(import rust-overlay)];
+    pkgs = import nixpkgs {
+      inherit system overlays;
+    };
+  in {
+    nixosConfigurations = {
+      nixos = lib.nixosSystem {
+        inherit system;
+        modules = [./configuration.nix];
       };
     };
+    homeConfigurations = {
+      vice = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          nvf.homeManagerModules.default
+          stylix.homeManagerModules.stylix
+          {nixpkgs.config.allowUnfree = true;}
+          ./home.nix
+          nixvim.homeManagerModules.nixvim
+        ];
+      };
+    };
+  };
 }
