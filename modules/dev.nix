@@ -11,6 +11,7 @@
         background_blur 4
       '';
     };
+    vscode.enable = true;
     git = {
       enable = true;
       userName = "McEazy2700";
