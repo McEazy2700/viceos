@@ -81,7 +81,7 @@
         emmet_ls.enable = true;
         nixd.enable = true;
         basedpyright.enable = true;
-        sqls.enable = true;
+        sqlls.enable = true;
         gopls.enable = true;
         tailwindcss.enable = true;
         ts_ls.enable = true;

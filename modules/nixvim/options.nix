@@ -64,15 +64,5 @@
       event = ["VimEnter"];
       command = "colorscheme tokyonight";
     }
-    # {
-    #   event = [ "VimEnter" ];
-    #   callback = {
-    #     __raw = ''
-    #       function()
-    #           vim.api.nvim_set_hl(0, "@ibl.indent.char.1", { fg = "#444444" })  -- Using a lighter gray
-    #       end
-    #     '';
-    #   };
-    # }
   ];
 }
