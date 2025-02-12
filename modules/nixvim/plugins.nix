@@ -1,7 +1,7 @@
-{ ... }: {
+{...}: {
   plugins = {
     lspsaga.enable = true;
-    transparent.enable = true;
+    transparent.enable = false;
     gitsigns.enable = true;
     telescope = {
       enable = true;
@@ -104,7 +104,7 @@
           enabled = false;
         };
         exclude = {
-          buftypes = [ "terminal" "nofile" ];
+          buftypes = ["terminal" "nofile"];
           filetypes = [
             "help"
             "alpha"
@@ -145,7 +145,7 @@
     enableLspFormat = true;
     settings = {
       border = "rounded"; # Rounded borders for :NullLsInfo window
-      cmd = [ "nvim" ];
+      cmd = ["nvim"];
     };
     sources = {
       code_actions = {
@@ -180,16 +180,16 @@
   plugins.lint = {
     enable = false;
     lintersByFt = {
-      text = [ "vale" ];
-      json = [ "jsonlint" ];
-      markdown = [ "vale" ];
-      rst = [ "vale" ];
-      ruby = [ "ruby" ];
-      janet = [ "janet" ];
-      inko = [ "inko" ];
-      clojure = [ "clj-kondo" ];
-      dockerfile = [ "hadolint" ];
-      terraform = [ "tflint" ];
+      text = ["vale"];
+      json = ["jsonlint"];
+      markdown = ["vale"];
+      rst = ["vale"];
+      ruby = ["ruby"];
+      janet = ["janet"];
+      inko = ["inko"];
+      clojure = ["clj-kondo"];
+      dockerfile = ["hadolint"];
+      terraform = ["tflint"];
     };
   };
   plugins.trouble.enable = true;
@@ -282,7 +282,7 @@
         completeopt = "menu,menuone,noinsert";
       };
       autoEnableSources = true;
-      experimental = { ghost_text = true; };
+      experimental = {ghost_text = true;};
       performance = {
         debounce = 30;
         fetchingTimeout = 200;
@@ -295,10 +295,10 @@
           end
         '';
       };
-      formatting = { fields = [ "kind" "abbr" "menu" ]; };
+      formatting = {fields = ["kind" "abbr" "menu"];};
       sources = [
-        { name = "nvim_lsp"; }
-        { name = "emoji"; }
+        {name = "nvim_lsp";}
+        {name = "emoji";}
         {
           name = "buffer"; # text within current buffer
           option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
@@ -316,8 +316,8 @@
       ];
 
       window = {
-        completion = { border = "rounded"; };
-        documentation = { border = "rounded"; };
+        completion = {border = "rounded";};
+        documentation = {border = "rounded";};
       };
 
       mapping = {

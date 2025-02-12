@@ -1,11 +1,11 @@
-{ ... }: {
+{...}: {
   colorschemes = {
     # onedark.enable = true;
     tokyonight = {
       enable = true;
       settings = {
         style = "night";
-        transparent = true;
+        transparent = false;
         lualine_bold = true;
         terminal_colors = true;
       };
