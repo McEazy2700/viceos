@@ -116,6 +116,7 @@
     slack
     pgcli
     nixd
+    bun
     # google-cloud-cli
 
     # Python
