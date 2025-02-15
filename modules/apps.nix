@@ -14,6 +14,7 @@
     jq
     ccze
     grc
+    tree
   ];
   programs = {
     cava.enable = true;
