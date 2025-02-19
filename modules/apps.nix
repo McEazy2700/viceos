@@ -15,6 +15,7 @@
     ccze
     grc
     tree
+    anydesk
   ];
   programs = {
     cava.enable = true;
