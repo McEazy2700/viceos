@@ -3,6 +3,9 @@
     lspsaga.enable = true;
     transparent.enable = false;
     gitsigns.enable = true;
+    nvim-ufo = {
+      enable = true;
+    };
     telescope = {
       enable = true;
       highlightTheme = "catppuccin-mocha";
