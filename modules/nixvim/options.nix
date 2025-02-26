@@ -16,6 +16,7 @@
     completeopt = "menu,menuone,noselect";
     conceallevel = 0;
     cursorline = true;
+    foldmethod = "indent";
     foldcolumn = "1";
     foldenable = true;
     foldlevel = 5;
