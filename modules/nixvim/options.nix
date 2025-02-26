@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   clipboard = {
     providers = {
       wl-copy.enable = true; # Wayland
@@ -16,6 +16,7 @@
     completeopt = "menu,menuone,noselect";
     conceallevel = 0;
     cursorline = true;
+    foldmethod = "indent";
     foldcolumn = "1";
     foldenable = true;
     foldlevel = 5;
@@ -56,16 +57,16 @@
   luaLoader.enable = true;
   autoCmd = [
     {
-      event = ["TextYankPost"];
-      pattern = ["*"];
+      event = [ "TextYankPost" ];
+      pattern = [ "*" ];
       command = "silent! lua vim.highlight.on_yank()";
     }
     {
-      event = ["VimEnter"];
+      event = [ "VimEnter" ];
       command = "colorscheme tokyonight";
     }
     {
-      event = ["VimEnter"];
+      event = [ "VimEnter" ];
       callback = {
         __raw = ''
           function()
