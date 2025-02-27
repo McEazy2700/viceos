@@ -111,6 +111,52 @@
     enable = true;
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      # Create a non-conflicting Python 2 package
+      python2NonConflicting = prev.stdenv.mkDerivation {
+        name = "python2-non-conflicting-${prev.python27.version}";
+
+        # Don't build from source, just modify the existing package
+        phases = [ "installPhase" ];
+
+        nativeBuildInputs = [ prev.makeWrapper ];
+
+        installPhase = ''
+          # Create output directories
+          mkdir -p $out/bin
+
+          # Copy Python 2 with a new name to avoid conflicts
+          cp -L ${prev.python27}/bin/python2* $out/bin/ 2>/dev/null || true
+          cp -L ${prev.python27}/bin/python $out/bin/python2 2>/dev/null || true
+
+          # Create a lib directory for Python modules
+          mkdir -p $out/lib
+          cp -r ${prev.python27}/lib/python* $out/lib/ 2>/dev/null || true
+
+          # Create an include directory for development
+          mkdir -p $out/include
+          cp -r ${prev.python27}/include/python* $out/include/ 2>/dev/null || true
+
+          # Copy other Python 2-specific binaries that won't conflict
+          # Explicitly avoid copying the known conflicting ones like 2to3
+          for bin in ${prev.python27}/bin/*; do
+            binName=$(basename "$bin")
+            # Skip conflicting binaries
+            if [[ "$binName" != "2to3" && "$binName" != "idle" &&
+                  "$binName" != "pydoc" && "$binName" != "python" &&
+                  "$binName" != "python-config" ]]; then
+              # Only copy if it doesn't exist yet and contains "2" in the name
+              if [[ "$binName" == *"2"* && ! -e "$out/bin/$binName" ]]; then
+                cp -L "$bin" "$out/bin/$binName"
+              fi
+            fi
+          done
+        '';
+      };
+    })
+  ];
+
   home.packages = with pkgs; [
     (import ./google-cloud-cli.nix { inherit pkgs; })
     slack
@@ -129,6 +175,7 @@
     python3Packages.pylsp-mypy
     python3Packages.pylsp-rope
     python3Packages.rope
+    python2NonConflicting
     pyenv
     black
     pylint

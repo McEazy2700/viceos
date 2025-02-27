@@ -111,6 +111,10 @@
     ]}";
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "python-2.7.18.8"
+  ];
+
   imports = [
     ./modules/apps.nix
     ./modules/stylix.nix
