@@ -16,6 +16,7 @@
     grc
     tree
     anydesk
+    opera
   ];
   programs = {
     cava.enable = true;
