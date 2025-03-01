@@ -2,7 +2,6 @@
   home.packages = with pkgs; [
     microsoft-edge
     usbutils
-    vivaldi
     discord
     ueberzug
     ffmpegthumbnailer
