@@ -11,7 +11,7 @@
 
       src = fetchurl {
         url = "https://github.com/ChurchApps/FreeShow/releases/download/v1.3.8/FreeShow-1.3.8-x86_64.AppImage";
-        hash = "sha256-/cqHdiL7E+NMuW6Hxp4IgHu9v8Ex57b9pzkbs4Tav7g=";
+        hash = "sha256-4LweaHlmSzVgeqoeLgZSfxfdNvYIkDKKh500hMasjJc=";
       };
 
       icon = fetchurl {

@@ -148,7 +148,7 @@
       isNormalUser = true;
       description = "Ezekiel Victor";
       extraGroups = ["networkmanager" "wheel"];
-      packages = with pkgs; [
+      packages = [
       ];
     };
     defaultUserShell = pkgs.fish;
