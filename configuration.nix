@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -13,13 +13,13 @@
   boot = {
     plymouth = {
       enable = true;
-      themePackages = [ pkgs.adi1090x-plymouth-themes ]; # Replace with your theme package
+      themePackages = [pkgs.adi1090x-plymouth-themes]; # Replace with your theme package
       theme = "ironman";
     };
     initrd.systemd.enable = true;
   };
   environment.variables = {
-    PATH = [ "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/go/bin" ];
+    PATH = ["$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/go/bin"];
   };
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.loader = {
@@ -29,7 +29,7 @@
     timeout = 3;
     grub = {
       enable = true;
-      devices = [ "nodev" ];
+      devices = ["nodev"];
       efiSupport = true;
       useOSProber = true;
       theme = pkgs.stdenv.mkDerivation {
@@ -77,6 +77,10 @@
 
   # Enable the X11 windowing system.
   services = {
+    openvpn.servers.myvpn = {
+      config = "/etc/openvpn/vpnbook-ca196-tcp80.ovpn";
+      autoStart = true;
+    };
     xserver = {
       enable = true;
       # Enable the GNOME Desktop Environment.
@@ -97,7 +101,7 @@
   };
 
   programs = {
-    gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+    gdk-pixbuf.modulePackages = [pkgs.librsvg];
     hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -132,7 +136,7 @@
   # Enable XDG portal
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -143,7 +147,7 @@
     users.vice = {
       isNormalUser = true;
       description = "Ezekiel Victor";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = ["networkmanager" "wheel"];
       packages = with pkgs; [
       ];
     };
@@ -201,7 +205,7 @@
 
   programs.fish.enable = true;
   users.users.vice.shell = pkgs.fish;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
