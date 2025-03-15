@@ -59,7 +59,7 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 3000 19000 19001 19002 ];
+      allowedTCPPorts = [ 3000 8080 8081 ];
     };
   };
 
