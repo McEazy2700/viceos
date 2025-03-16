@@ -56,6 +56,7 @@
     atk
     gtk3-x11
     adwaita-icon-theme
+    libunwind
   ];
   gtk = {
     enable = true;
@@ -108,6 +109,7 @@
       pkgs.zlib
       pkgs.zlib.dev
       pkgs.stdenv.cc.cc.lib
+      pkgs.libunwind
     ]}";
   };
 

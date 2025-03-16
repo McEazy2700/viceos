@@ -209,7 +209,6 @@
     podman-desktop
     qemu_full
     fastfetch
-    libunwind
   ];
 
   programs.fish.enable = true;
