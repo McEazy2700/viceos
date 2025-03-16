@@ -85,7 +85,7 @@
   services = {
     timesyncd.enable = true;
     openvpn.servers.myvpn = {
-      config = "/etc/openvpn/vpnbook-ca196-tcp80.ovpn";
+      config = "/etc/openvpn/USA_freeopenvpn_tcp.ovpn";
       autoStart = true;
     };
     xserver = {
