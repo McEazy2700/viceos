@@ -83,6 +83,7 @@
 
   # Enable the X11 windowing system.
   services = {
+    timesyncd.enable = true;
     openvpn.servers.myvpn = {
       config = "/etc/openvpn/vpnbook-ca196-tcp80.ovpn";
       autoStart = true;
