@@ -16,6 +16,7 @@
     tree
     anydesk
     opera
+    libunwind
   ];
   programs = {
     cava.enable = true;
