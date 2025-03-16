@@ -107,6 +107,7 @@
   };
 
   programs = {
+    nix-ld.enable = true;
     gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
     hyprland = {
       enable = true;
