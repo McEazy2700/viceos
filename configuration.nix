@@ -119,6 +119,7 @@
       enable = true;
       capSysNice = true;
     };
+    gamemode.enable = true;
     steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -230,6 +231,11 @@
     qemu_full
     fastfetch
     mangohud
+    (heroic.override {
+      extraPkgs = pkgs: [
+        pkgs.gamescope
+      ];
+    })
   ];
 
   programs.fish.enable = true;
