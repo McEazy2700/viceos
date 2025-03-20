@@ -141,7 +141,7 @@
 
   # Enable sound with pipewire.
   hardware = {
-    raphics = {
+    graphics = {
       enable = true;
       enable32Bit = true;
     };
