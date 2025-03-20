@@ -115,6 +115,17 @@
       xwayland.enable = true;
     };
     firefox.enable = true;
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
   };
 
   # Configure keymap in X11
@@ -126,9 +137,18 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.getty.autologinUser = "vice";
+
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  hardware.enableAllFirmware = true;
+  hardware = {
+    raphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    pulseaudio.enable = false;
+    enableAllFirmware = true;
+    xone.enable = true;
+  };
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -209,6 +229,7 @@
     podman-desktop
     qemu_full
     fastfetch
+    mangohud
   ];
 
   programs.fish.enable = true;
