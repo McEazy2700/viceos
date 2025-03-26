@@ -86,7 +86,7 @@
     timesyncd.enable = true;
     openvpn.servers.myvpn = {
       config = "/etc/openvpn/USA_freeopenvpn_tcp.ovpn";
-      autoStart = true;
+      autoStart = false;
     };
     xserver = {
       enable = true;
