@@ -21,7 +21,7 @@
   environment.variables = {
     PATH = [ "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/go/bin" ];
   };
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader = {
     # systemd-boot.enable = true;
     systemd-boot.enable = false;
@@ -222,6 +222,8 @@
     gh
     git
     pavucontrol
+    pulseaudio
+    pulseaudio-ctl
     pamixer
     alsa-utils
     podman
