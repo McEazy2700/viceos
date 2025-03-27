@@ -141,7 +141,6 @@
   services.getty.autologinUser = "vice";
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware = {
     graphics = {
       enable = true;
