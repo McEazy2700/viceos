@@ -142,6 +142,9 @@
 
   # Enable sound with pipewire.
   hardware = {
+    firmware = [
+      pkgs.sof-firmware
+    ];
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -163,7 +166,36 @@
     socketActivation = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
-    wireplumber.enable = true;
+    wireplumber = {
+      enable = true;
+      configPackages = [
+        (pkgs.writeTextDir "share/wireplumber/main.lua.d/51-auto-switch.lua" ''
+          table.insert(alsa_monitor.rules, {
+            matches = {
+              {
+                { "node.name", "matches", "alsa_input.*" },
+                { "device.bus_path", "matches", "pci*" },
+              },
+            },
+            apply_properties = {
+              ["device.disabled"] = false,
+            },
+          })
+
+          table.insert(alsa_monitor.rules, {
+            matches = {
+              {
+                { "node.name", "matches", "alsa_output.*" },
+                { "device.bus_path", "matches", "pci*" },
+              },
+            },
+            apply_properties = {
+              ["device.disabled"] = false,
+            },
+          })
+        '')
+      ];
+    };
     audio.enable = true;
   };
 
