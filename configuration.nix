@@ -141,12 +141,16 @@
   services.getty.autologinUser = "vice";
 
   # Enable sound with pipewire.
+  sound.enable = true;
   hardware = {
     graphics = {
       enable = true;
       enable32Bit = true;
     };
-    pulseaudio.enable = false;
+    pulseaudio = {
+      enable = false;
+      support32Bit = true;
+    };
     enableAllFirmware = true;
     xone.enable = true;
   };
@@ -156,6 +160,8 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    systemWide = true;
+    socketActivation = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
     wireplumber.enable = true;
@@ -176,7 +182,7 @@
     users.vice = {
       isNormalUser = true;
       description = "Ezekiel Victor";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" "pipewire" ];
       packages = [
       ];
     };
