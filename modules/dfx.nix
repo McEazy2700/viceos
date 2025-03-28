@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   inherit (pkgs) lib;
 in
@@ -7,10 +6,10 @@ in
   home.packages = with pkgs; [
     (pkgs.stdenv.mkDerivation rec {
       pname = "dfx";
-      version = "0.24.3";
+      version = "0.25.1";
 
       src = pkgs.fetchurl {
-        url = "https://github.com/dfinity/sdk/releases/download/0.24.3/dfx-0.24.3-x86_64-linux.tar.gz";
+        url = "https://github.com/dfinity/sdk/releases/download/0.25.1/dfx-0.25.1-x86_64-linux.tar.gz";
         sha256 = "sha256-+hAxDnr3Y9U8rJYHBJzJ1g4K/HLzYjngRAYOepghCEI=";
       };
 
