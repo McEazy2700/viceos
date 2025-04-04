@@ -10,7 +10,7 @@ in
 
       src = pkgs.fetchurl {
         url = "https://github.com/dfinity/sdk/releases/download/0.25.1/dfx-0.25.1-x86_64-linux.tar.gz";
-        sha256 = "sha256-0bZCWN54BbWfMkaXENUQsD3vwGs4W3Gf74gtAfZCaBc=";
+        sha256 = "sha256-HiEY4EY6pE/tOl3ujWOBRMZ+e27o4L6vdc/VZoe9t+c=";
       };
 
       nativeBuildInputs = with pkgs; [
