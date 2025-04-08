@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   plugins = {
     lspsaga.enable = true;
     transparent.enable = false;
@@ -91,7 +91,10 @@
         svelte.enable = true;
         dockerls.enable = true;
         emmet_language_server.enable = true;
-        solc.enable = true;
+        solidity_ls = {
+          enable = true;
+          package = pkgs.nodePackages.solidity-language-server;
+        };
         docker_compose_language_service.enable = true;
       };
     };
