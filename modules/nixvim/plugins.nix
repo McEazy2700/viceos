@@ -91,6 +91,7 @@
         svelte.enable = true;
         dockerls.enable = true;
         emmet_language_server.enable = true;
+        solidity.enable = true;
         docker_compose_language_service.enable = true;
       };
     };
