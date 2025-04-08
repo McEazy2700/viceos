@@ -91,9 +91,14 @@
         svelte.enable = true;
         dockerls.enable = true;
         emmet_language_server.enable = true;
-        solidity_ls = {
+        solc = {
+          settings = {
+            includePaths = [ "node_modules" ];
+            remappings = [ ];
+          };
           enable = true;
-          package = pkgs.nodePackages.solidity-language-server;
+          cmd = [ "solc" "--lsp" ];
+          filetypes = [ "solidity" ];
         };
         docker_compose_language_service.enable = true;
       };

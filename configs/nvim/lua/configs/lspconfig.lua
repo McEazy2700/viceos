@@ -15,6 +15,7 @@ local servers = {
   "emmet_ls",
   "dockerls",
   "ts_ls",
+  "solang",
   "tailwindcss",
   "emmet_language_server",
   "docker_compose_language_service",
