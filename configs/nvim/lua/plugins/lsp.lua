@@ -157,6 +157,11 @@ local plugins = {
     "mg979/vim-visual-multi",
     lazy = false,
   },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^6", -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
 }
 
 return plugins

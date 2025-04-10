@@ -36,7 +36,7 @@ M.mason = {
 
     -- c/cpp stuff
     "clangd",
-    "solang",
+    "vscode-solidity-server",
     "clang-format",
   },
 }
