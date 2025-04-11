@@ -2,17 +2,10 @@
 
 {
 
-  programs.rofi = {
-    enable = true;
-  };
-
-  home.file = {
-    ".config/rofi" = {
-      source = ../configs/rofi;
-      recursive = true;
-    };
-  };
-
+  # programs.rofi = {
+  #   enable = true;
+  # };
+  #
   programs.waybar = {
     enable = true;
     systemd = {

@@ -77,10 +77,14 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    # ".config/nvim" = {
-    #   source = ./configs/nvim;
-    #   recursive = true;
-    # };
+    ".config/nvim" = {
+      source = ./configs/nvim;
+      recursive = true;
+    };
+    ".config/rofi" = {
+      source = ./configs/rofi;
+      recursive = true;
+    };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
