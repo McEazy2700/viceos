@@ -13,8 +13,34 @@
   padding: 1rem;
   font-size: 18px;
   color: white;
+  margin: 0 20%;
+  min-width: 60%;
 }
 
 .results {
-  margin-top: 1rem;
+  margin: 1rem 20%;
+  min-width: 60%;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.app-entry {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.app-entry:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.instructions {
+  position: fixed;
+  bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
 }

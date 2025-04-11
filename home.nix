@@ -81,10 +81,10 @@
       source = ./configs/nvim;
       recursive = true;
     };
-    ".config/rofi" = {
-      source = ./configs/rofi;
-      recursive = true;
-    };
+    # ".config/rofi" = {
+    #   source = ./configs/rofi;
+    #   recursive = true;
+    # };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
