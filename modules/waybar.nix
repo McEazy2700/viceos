@@ -2,10 +2,10 @@
 
 {
 
-  # programs.rofi = {
-  #   enable = true;
-  # };
-  #
+  programs.rofi = {
+    enable = true;
+  };
+
   programs.waybar = {
     enable = true;
     systemd = {
