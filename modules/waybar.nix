@@ -7,7 +7,10 @@
   };
 
   home.file = {
-    ".config/rofi".source = ../configs/rofi;
+    ".config/rofi" = {
+      source = ../configs/rofi;
+      recursive = true;
+    };
   };
 
   programs.waybar = {
