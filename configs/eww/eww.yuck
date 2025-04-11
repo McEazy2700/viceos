@@ -1,0 +1,22 @@
+(defwindow launcher
+  :monitor 0
+  :geometry (geometry :x "0%"
+                     :y "0%"
+                     :width "100%"
+                     :height "100%"
+                     :anchor "center")
+  :stacking "overlay"
+  :windowtype "normal"
+  :wm-ignore true
+  (launcher-widget))
+
+(defwidget launcher-widget []
+  (box :class "launcher-container" 
+       :orientation "vertical"
+       :space-evenly false
+    (box :class "search-box"
+      (input :class "search-input"
+             :onchange "${EWW_CONFIG_DIR}/scripts/launcher.sh {}"
+             :placeholder "Search applications..."))
+    (box :class "results" :visible false
+         :id "search-results")))

@@ -81,10 +81,10 @@
       source = ./configs/nvim;
       recursive = true;
     };
-    # ".config/rofi" = {
-    #   source = ./configs/rofi;
-    #   recursive = true;
-    # };
+    ".config/rofi" = {
+      source = ./configs/rofi;
+      recursive = true;
+    };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -139,6 +139,7 @@
     ./modules/nixvim/default.nix
     ./modules/nvf/default.nix
     ./modules/zenbrowser.nix
+    ./modules/eww.nix
   ];
 
   # Let Home Manager install and manage itself.

@@ -98,7 +98,7 @@
         "$mainMod,       E, exec, nautilus"
         "$mainMod,       SPACE, togglefloating,"
         "$mainMod,       F, fullscreen,"
-        "$mainMod,       D, exec, /home/vice/.config/rofi/launchers/type-7/launcher.sh"
+        "$mainMod,       D, exec, eww open launcher"
         "$mainMod,       P, pseudo,"
         "$mainMod,       J, togglesplit,"
         "$mainMod,       V, exec, cliphist list | $menu --dmenu | cliphist decode | wl-copy"
