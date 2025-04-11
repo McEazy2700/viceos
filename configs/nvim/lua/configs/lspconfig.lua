@@ -67,12 +67,19 @@ local on_attach = function(_, bufnr)
   end, opts "List workspace folders")
 end
 
+local capabilities = nvlsp.capabilities
+
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
+    capabilities = capabilities,
   }
 end
 

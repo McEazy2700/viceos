@@ -162,6 +162,19 @@ local plugins = {
     version = "^6", -- Recommended
     lazy = false, -- This plugin is already lazy
   },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    config = function()
+      require("ufo").setup {
+        provider_selector = function(bufnr, filetype, buftype)
+          return { "treesitter", "indent" }
+        end,
+      }
+    end,
+  },
 }
 
 return plugins
