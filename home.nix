@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   nixpkgs.config.allowUnfree = true;
   home = {
     username = "vice";
@@ -19,6 +19,7 @@
     font-awesome
     libsForQt5.breeze-icons
     neovim
+    eww
 
     libuuid
     gcc-unwrapped.lib
@@ -72,6 +73,12 @@
     enable = true;
     platformTheme.name = "gtk"; # This makes Qt apps use your GTK theme
   };
+  home.activation = {
+    createRofiDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      mkdir -p ~/.config/rofi/colors
+      mkdir -p ~/.config/rofi/scripts
+    '';
+  };
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
@@ -81,10 +88,16 @@
       source = ./configs/nvim;
       recursive = true;
     };
-    # ".config/rofi" = {
-    #   source = ./configs/rofi;
+    # ".config/eww" = {
+    #   source = pkgs.lib.cleanSource ./configs/eww;
     #   recursive = true;
+    #   force = true;
     # };
+    ".config/rofi" = {
+      source = ./configs/rofi;
+      recursive = true;
+      force = true;
+    };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -139,7 +152,7 @@
     ./modules/nixvim/default.nix
     ./modules/nvf/default.nix
     ./modules/zenbrowser.nix
-    ./modules/eww.nix
+    # ./modules/eww.nix
   ];
 
   # Let Home Manager install and manage itself.
