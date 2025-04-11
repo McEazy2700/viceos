@@ -19,39 +19,40 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {
-    nixpkgs,
-    stylix,
-    nixvim,
-    home-manager,
-    rust-overlay,
-    nvf,
-    ...
-  }: let
-    inherit (nixpkgs) lib;
-    system = "x86_64-linux";
-    overlays = [(import rust-overlay)];
-    pkgs = import nixpkgs {
-      inherit system overlays;
-    };
-  in {
-    nixosConfigurations = {
-      nixos = lib.nixosSystem {
-        inherit system;
-        modules = [./configuration.nix];
+  outputs =
+    { nixpkgs
+    , stylix
+    , nixvim
+    , home-manager
+    , rust-overlay
+    , nvf
+    , ...
+    }:
+    let
+      inherit (nixpkgs) lib;
+      system = "x86_64-linux";
+      overlays = [ rust-overlay.overlays.default ];
+      pkgs = import nixpkgs {
+        inherit system overlays;
+      };
+    in
+    {
+      nixosConfigurations = {
+        nixos = lib.nixosSystem {
+          inherit system;
+          modules = [ ./configuration.nix ];
+        };
+      };
+      homeConfigurations = {
+        vice = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            nvf.homeManagerModules.default
+            stylix.homeManagerModules.stylix
+            ./home.nix
+            nixvim.homeManagerModules.nixvim
+          ];
+        };
       };
     };
-    homeConfigurations = {
-      vice = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          nvf.homeManagerModules.default
-          stylix.homeManagerModules.stylix
-          {nixpkgs.config.allowUnfree = true;}
-          ./home.nix
-          nixvim.homeManagerModules.nixvim
-        ];
-      };
-    };
-  };
 }
