@@ -13,8 +13,7 @@ fi
 
 ## Open widgets 
 run_eww() {
-	${EWW} --config "$CFG" open-many \
-		   background \
+	${EWW} -c "$CFG" open-many \
 		   profile \
 		   system \
 		   clock \
