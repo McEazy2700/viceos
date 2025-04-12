@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ## Open Applications
 FILE="$HOME/.cache/eww_launch.dashboard"
