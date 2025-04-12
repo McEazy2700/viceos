@@ -72,16 +72,16 @@
 	(box :class "genwin" :vexpand "false" :hexpand "false" 
 		(box :orientation "v" :spacing 35 :halign "center" :valign "center" :space-evenly "false" :vexpand "false" :hexpand "false" 
 			(box :class "cpu_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
-				(label :class "iconcpu" :text "")
+				(label :class "iconcpu" :text "")
 				(scale :min 0 :max 100 :value CPU_USAGE :active "false"))
 			(box :class "mem_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
-				(label :class "iconmem" :text "")
+				(label :class "iconmem" :text "")
 				(scale :min 0 :max 100 :value MEM_USAGE :active "false"))
 			(box :class "bright_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
-				(label :class "iconbright" :text "")
+				(label :class "iconbright" :text "󰃞")
 				(scale :min 0 :max 100 :value BLIGHT :active "false"))
 			(box :class "bat_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
-				(label :class "iconbat" :text "")
+				(label :class "iconbat" :text "")
 				(scale :min 0 :max 100 :value BATTERY :active "false")))))
 
 ;; clock
@@ -192,7 +192,7 @@
 	(box :class "genwin" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false" 
 		(box :class "hddbox" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
 			(box :space-evenly "false" :vexpand "false" :hexpand "false"
-				(button :class "hddicon" :onclick "scripts/open_apps --fm" "")
+				(button :class "hddicon" :onclick "scripts/open_apps --fm" "")
 				(label :class "fs_sep" :text "|"))
 			(box :space-evenly "false" :vexpand "false" :hexpand "false" 
 				(label :class "hdd_label" :wrap "true" :limit-width 25 :text FREE)))
@@ -200,7 +200,7 @@
 			(button :class "iconfolder1" :onclick "scripts/open_folders --docs" "󰈙")
 			(button :class "label_folder1" :onclick "scripts/open_folders --docs" "Documents"))
 		(box :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
-			(button :class "iconfolder2" :onclick "scripts/open_folders --dl" "")
+			(button :class "iconfolder2" :onclick "scripts/open_folders --dl" "")
 			(button :class "label_folder2" :onclick "scripts/open_folders --dl" "Downloads"))
 		(box :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
 			(button :class "iconfolder3" :onclick "scripts/open_folders --music" "")
@@ -212,7 +212,7 @@
 			(button :class "iconfolder5" :onclick "scripts/open_folders --cfg" "")
 			(button :class "label_folder5" :onclick "scripts/open_folders --cfg" "~/.config"))
 		(box :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
-			(button :class "iconfolder6" :onclick "scripts/open_folders --local" "ﮛ")
+			(button :class "iconfolder6" :onclick "scripts/open_folders --local" "󰜜")
 			(button :class "label_folder6" :onclick "scripts/open_folders --local" "~/.local"))))
 
 
