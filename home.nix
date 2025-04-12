@@ -88,11 +88,11 @@
       source = ./configs/nvim;
       recursive = true;
     };
-    # ".config/eww" = {
-    #   source = pkgs.lib.cleanSource ./configs/eww;
-    #   recursive = true;
-    #   force = true;
-    # };
+    ".config/eww" = {
+      source = pkgs.lib.cleanSource ./configs/eww;
+      recursive = true;
+      force = true;
+    };
     ".config/rofi" = {
       source = ./configs/rofi;
       recursive = true;
