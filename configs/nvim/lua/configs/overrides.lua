@@ -35,6 +35,7 @@ M.mason = {
     "prettier",
 
     -- c/cpp stuff
+    "rust-analyser",
     "clangd",
     "vscode-solidity-server",
     "clang-format",

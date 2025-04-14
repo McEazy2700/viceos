@@ -16,6 +16,7 @@ local servers = {
   "dockerls",
   "ts_ls",
   -- "solidity_ls",
+  "rust_analyser",
   "solidity_ls_nomicfoundation",
   "tailwindcss",
   "emmet_language_server",
