@@ -148,10 +148,6 @@
 
   # Enable sound with pipewire.
   hardware = {
-    firmware = [
-      pkgs.sof-firmware
-      pkgs.alsa-firmware
-    ];
     enableRedistributableFirmware = true;
     graphics = {
       enable = true;
@@ -165,33 +161,6 @@
     xone.enable = true;
   };
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-    audio.enable = true;
-
-    wireplumber.configPackages = [
-      (pkgs.writeTextDir "share/wireplumber/main.lua.d/99-headphone-fix.lua" ''
-        rule = {
-          matches = {
-            { 
-              { "device.name", "matches", "alsa_card.*" }
-            }
-          },
-          apply_properties = {
-            ["api.alsa.use-acp"] = true,
-            ["api.acp.auto-profile"] = false,
-            ["api.acp.auto-port"] = false
-          }
-        }
-        table.insert(alsa_monitor.rules, rule)
-      '')
-    ];
-  };
 
   # Enable XDG portal
   xdg.portal = {
