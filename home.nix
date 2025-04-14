@@ -18,7 +18,6 @@
     papirus-icon-theme
     font-awesome
     libsForQt5.breeze-icons
-    neovim
     eww
 
     libuuid

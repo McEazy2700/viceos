@@ -29,5 +29,21 @@
         obs-pipewire-audio-capture
       ];
     };
+    neovim = {
+      enable = true;
+
+      # This is important for Lazy
+      withNodeJs = true; # If you need Node.js support
+      withPython3 = true; # If you need Python support
+    };
   };
+
+  # Allow Lazy plugin manager to operate in a writable directory
+  home.file.".local/share/nvim/lazy".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/state/nvim/lazy";
+
+  # Create the directory structure
+  home.activation.createLazyDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p $HOME/.local/state/nvim/lazy
+  '';
 }

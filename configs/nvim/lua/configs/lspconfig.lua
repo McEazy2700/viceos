@@ -26,11 +26,6 @@ local nvlsp = require "nvchad.configs.lspconfig"
 local capabilities = nvlsp.capabilities
 local lsp_utils = require "utils.lsp"
 
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
-
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -39,3 +34,8 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
