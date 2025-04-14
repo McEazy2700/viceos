@@ -5,12 +5,18 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./system/audio.nix
   ];
 
   powerManagement.cpuFreqGovernor = "performance";
 
   # Bootloader.
   boot = {
+    extraModprobeConfig = ''
+      options snd-hda-intel model=auto
+      options snd-hda-intel dmic_detect=0  # Disable digital mic if causing conflicts
+    '';
+    kernelModules = [ "snd-hda-intel" ]; # Explicitly load sound module
     plymouth = {
       enable = true;
       themePackages = [ pkgs.adi1090x-plymouth-themes ]; # Replace with your theme package
@@ -144,7 +150,9 @@
   hardware = {
     firmware = [
       pkgs.sof-firmware
+      pkgs.alsa-firmware
     ];
+    enableRedistributableFirmware = true;
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -162,41 +170,27 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    systemWide = true;
-    socketActivation = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
-    wireplumber = {
-      enable = true;
-      configPackages = [
-        (pkgs.writeTextDir "share/wireplumber/main.lua.d/51-auto-switch.lua" ''
-          table.insert(alsa_monitor.rules, {
-            matches = {
-              {
-                { "node.name", "matches", "alsa_input.*" },
-                { "device.bus_path", "matches", "pci*" },
-              },
-            },
-            apply_properties = {
-              ["device.disabled"] = false,
-            },
-          })
-
-          table.insert(alsa_monitor.rules, {
-            matches = {
-              {
-                { "node.name", "matches", "alsa_output.*" },
-                { "device.bus_path", "matches", "pci*" },
-              },
-            },
-            apply_properties = {
-              ["device.disabled"] = false,
-            },
-          })
-        '')
-      ];
-    };
     audio.enable = true;
+
+    wireplumber.configPackages = [
+      (pkgs.writeTextDir "share/wireplumber/main.lua.d/99-headphone-fix.lua" ''
+        rule = {
+          matches = {
+            { 
+              { "device.name", "matches", "alsa_card.*" }
+            }
+          },
+          apply_properties = {
+            ["api.alsa.use-acp"] = true,
+            ["api.acp.auto-profile"] = false,
+            ["api.acp.auto-port"] = false
+          }
+        }
+        table.insert(alsa_monitor.rules, rule)
+      '')
+    ];
   };
 
   # Enable XDG portal
@@ -258,7 +252,10 @@
     ffmpeg
     gh
     git
-    pavucontrol
+    helvum # PipeWire patchbay to see connections
+    easyeffects # Audio effects for PipeWire
+    pavucontrol # Already included
+    alsa-tools
     pulseaudio
     pulseaudio-ctl
     pamixer
