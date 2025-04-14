@@ -38,6 +38,16 @@
     };
   };
 
+  home.activation.neovimLazyFix = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p $HOME/.local/state/nvim
+    # Create an empty lockfile if it doesn't exist
+    touch $HOME/.local/state/nvim/lazy-lock.json
+  '';
+
+  # Optional: If you want to maintain the appearance of the lockfile in your config
+  home.file.".config/nvim/lazy-lock.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/state/nvim/lazy-lock.json";
+
   # Allow Lazy plugin manager to operate in a writable directory
   home.file.".local/share/nvim/lazy".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/state/nvim/lazy";

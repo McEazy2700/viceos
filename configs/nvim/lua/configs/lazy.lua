@@ -1,4 +1,5 @@
 return {
+  lockfile = vim.fn.expand "~/.local/state/nvim/lazy-lock.json", -- Store in a writable location
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
 
