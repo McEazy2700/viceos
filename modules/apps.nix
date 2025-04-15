@@ -30,7 +30,7 @@
       ];
     };
     neovim = {
-      enable = true;
+      enable = false;
 
       # This is important for Lazy
       withNodeJs = true; # If you need Node.js support

@@ -49,6 +49,7 @@
           modules = [
             nvf.homeManagerModules.default
             stylix.homeManagerModules.stylix
+            { nixpkgs.config.allowUnfree = true; }
             ./home.nix
             nixvim.homeManagerModules.nixvim
           ];

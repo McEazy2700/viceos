@@ -83,10 +83,10 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".config/nvim" = {
-      source = ./configs/nvim;
-      recursive = true;
-    };
+    # ".config/nvim" = {
+    #   source = ./configs/nvim;
+    #   recursive = true;
+    # };
     ".config/eww" = {
       source = pkgs.lib.cleanSource ./configs/eww;
       recursive = true;
