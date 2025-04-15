@@ -5,18 +5,12 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./system/audio.nix
   ];
 
   powerManagement.cpuFreqGovernor = "performance";
 
   # Bootloader.
   boot = {
-    extraModprobeConfig = ''
-      options snd-hda-intel model=auto
-      options snd-hda-intel dmic_detect=0  # Disable digital mic if causing conflicts
-    '';
-    kernelModules = [ "snd-hda-intel" ]; # Explicitly load sound module
     plymouth = {
       enable = true;
       themePackages = [ pkgs.adi1090x-plymouth-themes ]; # Replace with your theme package
@@ -92,7 +86,7 @@
     timesyncd.enable = true;
     openvpn.servers.myvpn = {
       config = "/etc/openvpn/USA_freeopenvpn_tcp.ovpn";
-      autoStart = true;
+      autoStart = false;
     };
     xserver = {
       enable = true;
@@ -148,19 +142,27 @@
 
   # Enable sound with pipewire.
   hardware = {
-    enableRedistributableFirmware = true;
     graphics = {
       enable = true;
       enable32Bit = true;
     };
     pulseaudio = {
       enable = false;
-      support32Bit = true;
     };
     enableAllFirmware = true;
     xone.enable = true;
   };
   security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+
+    # jack.enable = true;
+    # wireplumber.enable = true;
+    # audio.enable = true;
+  };
 
   # Enable XDG portal
   xdg.portal = {
@@ -176,8 +178,9 @@
     users.vice = {
       isNormalUser = true;
       description = "Ezekiel Victor";
-      extraGroups = [ "networkmanager" "wheel" "audio" "pipewire" ];
-      packages = [
+      extraGroups = [ "networkmanager" "wheel" "audio" ];
+      packages = with pkgs; [
+        thunderbird
       ];
     };
     defaultUserShell = pkgs.fish;
@@ -221,10 +224,7 @@
     ffmpeg
     gh
     git
-    helvum # PipeWire patchbay to see connections
-    easyeffects # Audio effects for PipeWire
-    pavucontrol # Already included
-    alsa-tools
+    pavucontrol
     pulseaudio
     pulseaudio-ctl
     pamixer

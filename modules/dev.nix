@@ -187,6 +187,7 @@
     (rust-bin.stable.latest.default.override {
       targets = [ "wasm32-unknown-unknown" ];
     })
+    rust-analyzer
     cargo-edit
     cargo-watch
     cargo-audit
