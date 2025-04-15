@@ -18,7 +18,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.packages = with pkgs; [
-    neovim-nightly
+    pkgs.hello
     papirus-icon-theme
     font-awesome
     libsForQt5.breeze-icons
