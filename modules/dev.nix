@@ -1,6 +1,7 @@
-{ pkgs
-, lib
-, ...
+{
+  pkgs,
+  lib,
+  ...
 }: {
   programs = {
     kitty = {
@@ -58,12 +59,12 @@
           bufferline = "multiple";
         };
         keys.normal = {
-          esc = [ "collapse_selection" "keep_primary_selection" ];
+          esc = ["collapse_selection" "keep_primary_selection"];
           "[" = {
-            b = [ ":buffer-previous" ];
+            b = [":buffer-previous"];
           };
           "]" = {
-            b = [ ":buffer-next" ];
+            b = [":buffer-next"];
           };
         };
       };
@@ -118,9 +119,9 @@
         name = "python2-non-conflicting-${prev.python27.version}";
 
         # Don't build from source, just modify the existing package
-        phases = [ "installPhase" ];
+        phases = ["installPhase"];
 
-        nativeBuildInputs = [ prev.makeWrapper ];
+        nativeBuildInputs = [prev.makeWrapper];
 
         installPhase = ''
           # Create output directories
@@ -158,7 +159,7 @@
   ];
 
   home.packages = with pkgs; [
-    (import ./google-cloud-cli.nix { inherit pkgs; })
+    (import ./google-cloud-cli.nix {inherit pkgs;})
     slack
     pgcli
     nixd
@@ -185,9 +186,8 @@
 
     # Rust development tools
     (rust-bin.stable.latest.default.override {
-      targets = [ "wasm32-unknown-unknown" ];
+      targets = ["wasm32-unknown-unknown"];
     })
-    rust-analyzer
     cargo-edit
     cargo-watch
     cargo-audit
