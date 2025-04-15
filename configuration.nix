@@ -184,14 +184,15 @@
   };
 
   fonts.packages = with pkgs; [
-    nerd-fonts.iosevka
     nerd-fonts.fira-code
+    nerd-fonts.iosevka
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
     liberation_ttf
     fira-code
     fira-code-symbols
+    cascadia-code
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
