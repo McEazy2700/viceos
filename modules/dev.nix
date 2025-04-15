@@ -12,7 +12,6 @@
         background_blur 4
       '';
     };
-    vscode.enable = true;
     git = {
       enable = true;
       userName = "McEazy2700";
@@ -202,7 +201,7 @@
     go-migrate
 
     # Node.js development tools
-    nodejs_20
+    nodejs_22
     yarn
     nodePackages.pnpm
     nodePackages.npm

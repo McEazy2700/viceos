@@ -25,8 +25,6 @@
           inherit name src version pname;
 
           extraInstallCommands = ''
-            mv $out/bin/${name} $out/bin/${pname}
-
             # Create desktop file
             mkdir -p $out/share/applications
             cat > $out/share/applications/${pname}.desktop << EOF
