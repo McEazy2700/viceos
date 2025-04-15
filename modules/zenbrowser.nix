@@ -1,15 +1,12 @@
-{ config, lib, pkgs, ... }:
-
-let
-  zenbrowser = pkgs.callPackage
+{pkgs, ...}: let
+  zenbrowser =
+    pkgs.callPackage
     (
-      { lib
-      , stdenv
-      , fetchurl
-      , appimageTools
-      }:
-
-      let
+      {
+        lib,
+        fetchurl,
+        appimageTools,
+      }: let
         pname = "ZenBrowser";
         version = "1.0.2-b.4";
         name = "${pname}-${version}";
@@ -23,43 +20,40 @@ let
           url = "https://docs.zen-browser.app/static/icon.png";
           hash = "sha256-FXbh3eDdvROF6Z0bEAFxYr93LSz+c/Z0WcrCcsrauGI="; # You'll need to provide this
         };
-
-        appimageContents = appimageTools.extractType2 { inherit name src; };
       in
-      appimageTools.wrapType2 {
-        inherit name src;
+        appimageTools.wrapType2 {
+          inherit name src version pname;
 
-        extraInstallCommands = ''
-          mv $out/bin/${name} $out/bin/${pname}
-        
-          # Create desktop file
-          mkdir -p $out/share/applications
-          cat > $out/share/applications/${pname}.desktop << EOF
-          [Desktop Entry]
-          Name=ZenBrowser
-          Exec=${pname}
-          Type=Application
-          Categories=Network;WebBrowser;
-          Comment=Beautifully designed, privacy-focused browser, packed with features.
-          Icon=${pname}
-          EOF
+          extraInstallCommands = ''
+            mv $out/bin/${name} $out/bin/${pname}
 
-          # Install the icon
-          mkdir -p $out/share/icons/hicolor/512x512/apps
-          cp ${icon} $out/share/icons/hicolor/512x512/apps/${pname}.png
-        '';
+            # Create desktop file
+            mkdir -p $out/share/applications
+            cat > $out/share/applications/${pname}.desktop << EOF
+            [Desktop Entry]
+            Name=ZenBrowser
+            Exec=${pname}
+            Type=Application
+            Categories=Network;WebBrowser;
+            Comment=Beautifully designed, privacy-focused browser, packed with features.
+            Icon=${pname}
+            EOF
 
-        meta = with lib; {
-          description = "Beautifully designed, privacy-focused browser, packed with features.";
-          homepage = "https://zen-browser.app";
-          license = licenses.unfree;
-          platforms = [ "x86_64-linux" ];
-          maintainers = [ ];
-        };
-      }
+            # Install the icon
+            mkdir -p $out/share/icons/hicolor/512x512/apps
+            cp ${icon} $out/share/icons/hicolor/512x512/apps/${pname}.png
+          '';
+
+          meta = with lib; {
+            description = "Beautifully designed, privacy-focused browser, packed with features.";
+            homepage = "https://zen-browser.app";
+            license = licenses.unfree;
+            platforms = ["x86_64-linux"];
+            maintainers = [];
+          };
+        }
     )
-    { };
-in
-{
-  home.packages = [ zenbrowser ];
+    {};
+in {
+  home.packages = [zenbrowser];
 }

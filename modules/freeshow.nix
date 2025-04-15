@@ -20,7 +20,7 @@
       };
     in
       appimageTools.wrapType2 {
-        inherit name src;
+        inherit name src version pname;
 
         extraInstallCommands = ''
           mv $out/bin/${name} $out/bin/${pname}
