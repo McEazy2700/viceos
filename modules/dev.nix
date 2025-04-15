@@ -47,7 +47,7 @@
         minimum-contrast = 1.1;
         window-decoration = false;
         confirm-close-surface = false;
-        font-family = "FiraCode Nerd Font";
+        font-family = "Fira Code";
       };
     };
     helix = {

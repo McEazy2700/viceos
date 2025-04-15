@@ -137,7 +137,7 @@
                color: #c0caf5;
              }
        #custom-cava-internal{
-               font-family: "FiraCode Nerd Font" ;
+               font-family: "Fira Code" ;
                color: #33ccff;
              }
     '';

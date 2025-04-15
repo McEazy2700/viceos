@@ -1,17 +1,16 @@
 {pkgs, ...}: {
   stylix = {
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
     enable = true;
     autoEnable = true;
     image = ../Wallpapers/one-piece-monkey-d-luffy-peaceful-sea-desktop-wallpaper.jpg;
     polarity = "dark";
-
     cursor.package = pkgs.bibata-cursors;
     cursor.name = "Bibata-Modern-Ice";
-
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode Nerd Font";
+        name = "Fira Code";
       };
 
       serif = {
