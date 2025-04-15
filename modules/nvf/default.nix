@@ -1,6 +1,6 @@
 {
   programs.nvf = {
-    enable = false;
+    enable = true;
     settings = {
       vim = {
         options = {
@@ -15,6 +15,7 @@
           conceallevel = 0;
           cursorline = true;
           foldcolumn = "1";
+          foldmethod = "indent";
           foldenable = true;
           foldlevel = 5;
           foldlevelstart = 99;
@@ -69,25 +70,25 @@
           {
             action = "<cmd> 1ToggleTerm direction=float name=float <cr>";
             key = "<M-f>";
-            mode = [ "n" "t" ];
+            mode = ["n" "t"];
             desc = "Toggle floating term";
           }
           {
             action = "<cmd> 2ToggleTerm direction=horizontal name=horizontal size=30 <cr>";
             key = "<M-h>";
-            mode = [ "n" "t" ];
+            mode = ["n" "t"];
             desc = "Toggle horizontal term";
           }
           {
             action = "<cmd> 3ToggleTerm direction=vertical name=vertical size=110 <cr>";
             key = "<M-v>";
-            mode = [ "n" "t" ];
+            mode = ["n" "t"];
             desc = "Toggle vertical term";
           }
           {
             action = ''"+y'';
             key = "<leader>y";
-            mode = [ "n" "v" ];
+            mode = ["n" "v"];
             desc = "Yank to system clipboard";
           }
           {
@@ -178,7 +179,6 @@
           lspSignature.enable = true;
           lspconfig.enable = true;
           lspkind.enable = true;
-          lsplines.enable = true;
           null-ls.enable = true;
           nvim-docs-view.enable = true;
           otter-nvim.enable = true;
@@ -218,7 +218,6 @@
           nix.enable = true;
           ts.enable = true;
           python.enable = true;
-          solidity.enable = true;
           rust.enable = true;
           go.enable = true;
           sql.enable = true;
