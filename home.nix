@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
   home = {
     username = "vice";
@@ -14,7 +18,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.packages = with pkgs; [
-    pkgs.hello
+    neovim-nightly
     papirus-icon-theme
     font-awesome
     libsForQt5.breeze-icons
@@ -73,7 +77,7 @@
     platformTheme.name = "gtk"; # This makes Qt apps use your GTK theme
   };
   home.activation = {
-    createRofiDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    createRofiDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
       mkdir -p ~/.config/rofi/colors
       mkdir -p ~/.config/rofi/scripts
     '';

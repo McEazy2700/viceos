@@ -1,8 +1,9 @@
-{
+{pkgs, ...}: {
   programs.nvf = {
     enable = true;
     settings = {
       vim = {
+        package = pkgs.neovim-nightly;
         options = {
           softtabstop = 0;
           expandtab = true;
