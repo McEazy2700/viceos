@@ -5,6 +5,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     stylix.url = "github:danth/stylix/release-24.11";
     nvf = {
       url = "github:notashelf/nvf";
@@ -25,12 +26,13 @@
     nixvim,
     home-manager,
     rust-overlay,
+    neovim-nightly-overlay,
     nvf,
     ...
   }: let
     inherit (nixpkgs) lib;
     system = "x86_64-linux";
-    overlays = [rust-overlay.overlays.default];
+    overlays = [rust-overlay.overlays.default neovim-nightly-overlay.overlays.default];
     pkgs = import nixpkgs {
       inherit system overlays;
     };

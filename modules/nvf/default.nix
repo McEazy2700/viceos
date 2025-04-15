@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       vim = {
-        package = pkgs.neovim-nightly;
+        package = pkgs.neovim;
         options = {
           softtabstop = 0;
           expandtab = true;
