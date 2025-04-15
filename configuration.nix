@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -13,13 +13,13 @@
   boot = {
     plymouth = {
       enable = true;
-      themePackages = [ pkgs.adi1090x-plymouth-themes ]; # Replace with your theme package
+      themePackages = [pkgs.adi1090x-plymouth-themes]; # Replace with your theme package
       theme = "ironman";
     };
     initrd.systemd.enable = true;
   };
   environment.variables = {
-    PATH = [ "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/go/bin" ];
+    PATH = ["$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/go/bin"];
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader = {
@@ -29,7 +29,7 @@
     timeout = 3;
     grub = {
       enable = true;
-      devices = [ "nodev" ];
+      devices = ["nodev"];
       efiSupport = true;
       useOSProber = true;
       theme = pkgs.stdenv.mkDerivation {
@@ -59,7 +59,7 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 3000 8080 8081 4943 ];
+      allowedTCPPorts = [3000 8080 8081 4943];
     };
   };
 
@@ -109,7 +109,7 @@
 
   programs = {
     nix-ld.enable = true;
-    gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+    gdk-pixbuf.modulePackages = [pkgs.librsvg];
     hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -146,9 +146,6 @@
       enable = true;
       enable32Bit = true;
     };
-    pulseaudio = {
-      enable = false;
-    };
     enableAllFirmware = true;
     xone.enable = true;
   };
@@ -167,7 +164,7 @@
   # Enable XDG portal
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -178,7 +175,7 @@
     users.vice = {
       isNormalUser = true;
       description = "Ezekiel Victor";
-      extraGroups = [ "networkmanager" "wheel" "audio" ];
+      extraGroups = ["networkmanager" "wheel" "audio"];
       packages = with pkgs; [
         thunderbird
       ];
@@ -187,11 +184,11 @@
   };
 
   fonts.packages = with pkgs; [
-    nerdfonts
+    nerd-fonts.iosevka
+    nerd-fonts.fira-code
+    nerd-fonts.cascadia-code
     noto-fonts
     noto-fonts-cjk-sans
-    cascadia-code
-    iosevka
     noto-fonts-emoji
     liberation_ttf
     fira-code
@@ -245,7 +242,7 @@
 
   programs.fish.enable = true;
   users.users.vice.shell = pkgs.fish;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
