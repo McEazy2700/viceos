@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   stylix = {
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
     enable = true;
@@ -9,7 +9,7 @@
     cursor.name = "Bibata-Modern-Ice";
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts;
+        package = pkgs.nerd-fonds.fira-code;
         name = "Fira Code";
       };
 
