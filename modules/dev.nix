@@ -47,7 +47,7 @@
         minimum-contrast = 1.1;
         window-decoration = false;
         confirm-close-surface = false;
-        font-family = "Iosevka Nerd Font";
+        font-family = "FiraCode Nerd Font";
       };
     };
     helix = {
