@@ -186,7 +186,6 @@
   fonts.packages = with pkgs; [
     nerd-fonts.iosevka
     nerd-fonts.fira-code
-    nerd-fonts.cascadia-code-pl
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
