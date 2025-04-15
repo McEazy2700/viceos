@@ -9,7 +9,7 @@
     cursor.name = "Bibata-Modern-Ice";
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonds.fira-code;
+        package = pkgs.nerd-fonts.fira-code;
         name = "Fira Code";
       };
 
