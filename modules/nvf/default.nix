@@ -218,7 +218,24 @@
           nix.enable = true;
           ts.enable = true;
           python.enable = true;
-          rust.enable = true;
+          rust = {
+            enable = true;
+            crates.enable = true;
+            crates.codeActions = true;
+            dap.enable = true;
+            format.enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+            lsp.opts = ''
+              ['rust-analyzer'] = {
+                cargo = {allFeature = true},
+                checkOnSave = true,
+                procMacro = {
+                  enable = true,
+                },
+              },
+            '';
+          };
           go.enable = true;
           sql.enable = true;
           svelte.enable = true;
