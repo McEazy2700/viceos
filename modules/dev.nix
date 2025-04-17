@@ -203,11 +203,12 @@
 
     # Node.js development tools
     nodejs_20
-    yarn
-    nodePackages.pnpm
-    nodePackages.npm
-    nodePackages.typescript
-    nodePackages.typescript-language-server
+    pnpm
+    # # yarn
+    # nodePackages.pnpm
+    # nodePackages.npm
+    # nodePackages.typescript
+    # nodePackages.typescript-language-server
     bash
   ];
 

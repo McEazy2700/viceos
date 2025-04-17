@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     microsoft-edge
     usbutils
@@ -33,12 +38,11 @@
       enable = false;
 
       # This is important for Lazy
-      withNodeJs = true; # If you need Node.js support
       withPython3 = true; # If you need Python support
     };
   };
 
-  home.activation.neovimLazyFix = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.neovimLazyFix = lib.hm.dag.entryAfter ["writeBoundary"] ''
     mkdir -p $HOME/.local/state/nvim
     # Create an empty lockfile if it doesn't exist
     touch $HOME/.local/state/nvim/lazy-lock.json
@@ -53,7 +57,7 @@
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/state/nvim/lazy";
 
   # Create the directory structure
-  home.activation.createLazyDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.createLazyDir = lib.hm.dag.entryAfter ["writeBoundary"] ''
     mkdir -p $HOME/.local/state/nvim/lazy
   '';
 }
