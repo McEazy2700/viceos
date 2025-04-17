@@ -202,7 +202,7 @@
     go-migrate
 
     # Node.js development tools
-    nodejs_22
+    nodejs_20
     yarn
     nodePackages.pnpm
     nodePackages.npm
