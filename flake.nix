@@ -31,7 +31,6 @@
     stylix,
     nixvim,
     home-manager,
-    flake-utils,
     rust-overlay,
     neovim-nightly-overlay,
     nvf,
@@ -67,25 +66,5 @@
         ];
       };
     };
-    # ✅ Add this dev shell section
-    devShells = flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {
-          inherit system;
-        };
-      in {
-        default = pkgs.mkShell {
-          buildInputs = [
-            pkgs.python39
-            pkgs.poetry
-          ];
-
-          shellHook = ''
-            export POETRY_VIRTUALENVS_IN_PROJECT=true
-            echo "🐍 Python: $(python3 --version)"
-          '';
-        };
-      }
-    );
   };
 }
