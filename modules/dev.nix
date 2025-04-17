@@ -34,7 +34,7 @@
         dev_job = "cd ~/Documents/dev/jobs && tmux new -s Jobs";
         dev_learn = "cd ~/Documents/dev/learn && tmux new -s Learn";
         dev_mine = "cd ~/Documents/dev/mine && tmux new -s Mine";
-        gio_shell = "nix develop ~/.dotfiles/nixos#gio && fish";
+        dev-py39 = "nix develop ~/.dotfile/viceos/flakes/python3.9-dev/"
       };
     };
     ghostty = {
