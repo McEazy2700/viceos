@@ -62,6 +62,41 @@
             silent = true;
           }
           {
+            key = "[d";
+            action = "<cmd> Lspsaga diagnostic_jump_prev <cr>";
+            mode = "n";
+            silent = true;
+            desc = "Previous Diagnostic";
+          }
+          {
+            key = "]d";
+            action = "<cmd> Lspsaga diagnostic_jump_next <cr>";
+            mode = "n";
+            silent = true;
+            desc = "Next Diagnostic";
+          }
+          {
+            action = "<cmd> Lspsaga rename <cr>";
+            key = "<leader>lr";
+            mode = "n";
+            silent = true;
+            desc = "Lsp Rename";
+          }
+          {
+            action = "<cmd> Lspsaga hover_doc <cr>";
+            key = "K";
+            mode = "n";
+            silent = true;
+            desc = "Hover documentation";
+          }
+          {
+            action = "<cmd> Lspsaga code_action <cr>";
+            key = "<leader>la";
+            mode = "n";
+            silent = true;
+            desc = "Code Action";
+          }
+          {
             action = "<cmd> bdelete <cr>";
             key = "<leader>x";
             desc = "Close Buffer";
@@ -174,6 +209,7 @@
         visuals.indent-blankline.enable = true;
         treesitter.context.enable = true;
         lsp = {
+          lspsaga.enable = true;
           enable = true;
           formatOnSave = true;
           lightbulb.enable = true;

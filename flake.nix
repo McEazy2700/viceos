@@ -26,8 +26,17 @@
     };
   };
 
-  outputs = { nixpkgs, stylix, nixvim, home-manager, rust-overlay, neovim-nightly-overlay, nvf, ... }: 
-  let
+  outputs = {
+    nixpkgs,
+    stylix,
+    nixvim,
+    home-manager,
+    flake-utils,
+    rust-overlay,
+    neovim-nightly-overlay,
+    nvf,
+    ...
+  }: let
     system = "x86_64-linux";
     overlays = [
       rust-overlay.overlays.default
@@ -40,7 +49,7 @@
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
+        modules = [./configuration.nix];
       };
     };
 
@@ -58,5 +67,25 @@
         ];
       };
     };
+    # ✅ Add this dev shell section
+    devShells = flake-utils.lib.eachDefaultSystem (
+      system: let
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+      in {
+        default = pkgs.mkShell {
+          buildInputs = [
+            pkgs.python39
+            pkgs.poetry
+          ];
+
+          shellHook = ''
+            export POETRY_VIRTUALENVS_IN_PROJECT=true
+            echo "🐍 Python: $(python3 --version)"
+          '';
+        };
+      }
+    );
   };
 }
