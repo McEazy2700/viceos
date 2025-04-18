@@ -14,6 +14,7 @@
     imagemagick
     inkscape
     pciutils
+    obsidian
     atlas
     jq
     ccze

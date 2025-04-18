@@ -204,6 +204,7 @@
     # Node.js development tools
     nodejs_20
     pnpm
+    typescript
     # # yarn
     # nodePackages.pnpm
     # nodePackages.npm
