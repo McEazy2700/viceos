@@ -233,6 +233,7 @@
     qemu_full
     fastfetch
     mangohud
+    code-cursor
     (heroic.override {
       extraPkgs = pkgs: [
         pkgs.gamescope

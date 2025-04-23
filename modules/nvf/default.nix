@@ -211,7 +211,7 @@
         lsp = {
           lspsaga.enable = true;
           enable = true;
-          formatOnSave = true;
+          formatOnSave = false;
           lightbulb.enable = true;
           lspSignature.enable = true;
           lspconfig.enable = true;
