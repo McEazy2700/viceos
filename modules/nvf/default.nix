@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.nvf = {
-    enable = true;
+    enable = false;
     settings = {
       vim = {
         package = pkgs.neovim;
