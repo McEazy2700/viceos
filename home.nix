@@ -87,7 +87,7 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
     ".config/nvim" = {
-      source = ./configs/astrovim_config;
+      source = builtins.path { path = ./configs/astrovim_config; };
       recursive = true;
     };
     ".config/eww" = {
