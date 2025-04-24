@@ -86,7 +86,32 @@
         basedpyright.enable = true;
         gopls.enable = true;
         tailwindcss.enable = true;
-        ts_ls.enable = true;
+        ts_ls = {
+          enable = true;
+          extraOptions = {
+            on_attach = ''
+              function(client, bufnr)
+                -- Your custom on_attach logic here
+                vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+              end
+            '';
+            settings = {
+              completions = {
+                completeFunctionCalls = true;
+              };
+              javascript = {
+                suggest = {
+                  autoImports = true;
+                };
+              };
+              typescript = {
+                suggest = {
+                  autoImports = true;
+                };
+              };
+            };
+          };
+        };
         cssls.enable = true;
         svelte.enable = true;
         dockerls.enable = true;

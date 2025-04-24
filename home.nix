@@ -1,7 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }: {
   nixpkgs.config.allowUnfree = true;
   home = {
@@ -77,7 +76,7 @@
     platformTheme.name = "gtk"; # This makes Qt apps use your GTK theme
   };
   home.activation = {
-    createRofiDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    createRofiDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       mkdir -p ~/.config/rofi/colors
       mkdir -p ~/.config/rofi/scripts
     '';
@@ -87,10 +86,10 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    # ".config/nvim" = {
-    #   source = ./configs/nvim;
-    #   recursive = true;
-    # };
+    ".config/nvim" = {
+      source = ./configs/astrovim_config;
+      recursive = true;
+    };
     ".config/eww" = {
       source = pkgs.lib.cleanSource ./configs/eww;
       recursive = true;

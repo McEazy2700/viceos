@@ -167,8 +167,8 @@
 
     # Python
     pipx
-    python310Full
-    python310Packages.pandas
+    python3Full
+    python3Packages.pandas
     python3Packages.pip
     python3Packages.poetry-core
     python3Packages.python-lsp-server
@@ -201,10 +201,9 @@
     go-migrate
 
     # Node.js development tools
-    nodejs_20
+    nodejs
     pnpm
-    typescript
-    # # yarn
+    yarn
     nodePackages.pnpm
     nodePackages.npm
     nodePackages.typescript
