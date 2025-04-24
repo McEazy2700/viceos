@@ -45,15 +45,16 @@
     };
   };
 
-  home.activation.neovimLazyFix = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p $HOME/.local/state/nvim
-    # Create an empty lockfile if it doesn't exist
-    touch $HOME/.local/state/nvim/lazy-lock.json
-  '';
+  # Create a symlink instead
+  home.activation.linkAstroVimConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    # Remove existing config if it exists
+    if [ -e $HOME/.config/nvim ]; then
+      rm -rf $HOME/.config/nvim
+    fi
 
-  # Optional: If you want to maintain the appearance of the lockfile in your config
-  home.file.".config/nvim/lazy-lock.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/state/nvim/lazy-lock.json";
+    # Create symlink
+    ln -sf $HOME/.dotfile/viceos/configs/astrovim_config $HOME/.config/nvim
+  '';
 
   # Allow Lazy plugin manager to operate in a writable directory
   home.file.".local/share/nvim/lazy".source =

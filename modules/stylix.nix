@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   stylix = {
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
     enable = true;
@@ -7,6 +7,7 @@
     polarity = "dark";
     cursor.package = pkgs.bibata-cursors;
     cursor.name = "Bibata-Modern-Ice";
+    targets.neovim.enable = false;
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.fira-code;
