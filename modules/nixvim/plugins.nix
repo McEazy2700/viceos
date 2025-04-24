@@ -106,14 +106,14 @@
     indent-blankline = {
       enable = true;
       settings = {
-        whitespace.remove_blankline_trail = false;
+        whitespace.remove_blankline_trail = true;
         indent = {
           char = "▎"; # "│" or "▎"
           tab_char = "│";
           smart_indent_cap = true;
         };
         scope = {
-          enabled = false;
+          enabled = true;
         };
         exclude = {
           buftypes = [ "terminal" "nofile" ];
@@ -190,7 +190,7 @@
   };
   plugins.lazygit.enable = true;
   plugins.lint = {
-    enable = false;
+    enable = true;
     lintersByFt = {
       text = [ "vale" ];
       json = [ "jsonlint" ];
@@ -235,7 +235,7 @@
   };
   # Even more snippets
   plugins.nvim-snippets = {
-    enable = false;
+    enable = true;
     settings = {
       create_autocmd = true;
       create_cmp_source = true;

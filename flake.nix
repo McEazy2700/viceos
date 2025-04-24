@@ -16,7 +16,7 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -60,8 +60,17 @@
           stylix.homeManagerModules.stylix
           ./home.nix
           nixvim.homeManagerModules.nixvim
+
           {
             nixpkgs.config.allowUnfree = true;
+          }
+
+          {
+            programs.vscode = {
+              enable = false;
+            };
+
+            services.wpaperd.enable = false;
           }
         ];
       };
