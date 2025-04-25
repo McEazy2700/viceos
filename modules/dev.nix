@@ -90,20 +90,48 @@
   programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
-    plugins = with pkgs; [
-      tmuxPlugins.sensible
-      tmuxPlugins.vim-tmux-navigator
-      tmuxPlugins.catppuccin
+    shortcut = "Space";
+    terminal = "tmux-256color";
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      vim-tmux-navigator
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavour "mocha"  # Latte/frappe/macchiato/mocha
+          set -g @catppuccin_window_left_separator ""
+          set -g @catppuccin_window_right_separator " "
+          set -g @catppuccin_window_middle_separator " █"
+          set -g @catppuccin_status_modules_right "directory session date_time"
+          set -g @catppuccin_status_left_separator " "
+          set -g @catppuccin_status_right_separator ""
+        '';
+      }
     ];
     extraConfig = ''
-      set-option -sa terminal-overrides ",xterm*:Tc"
+      # True color support (critical for Neovim)
+      set -g default-terminal "tmux-256color"
+      set -ag terminal-overrides ",xterm*:RGB"
 
-      unbind C-b
-      set -g prefix C-Space
-      bind C-Space send-prefix
-
+      # Vim-like pane navigation (Alt+h/j/k/l)
       bind -n M-H previous-window
       bind -n M-L next-window
+
+      # Open new panes in current directory
+      bind '"' split-window -v -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+
+      # Reload config (Ctrl-Space + r)
+      bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+      # Status bar tweaks
+      set -g status-position top
+      set -g status-style bg=default
+      set -g status-left ""
+
+      # Force ALL tabs to use basename-only display (redundant but ensures consistency)
+      set -g window-status-format "#I:#{b:pane_current_path}"
+      set -g window-status-current-format "#I:#{b:pane_current_path}"
     '';
   };
 
