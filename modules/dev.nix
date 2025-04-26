@@ -105,9 +105,10 @@
           set -g @catppuccin_status_left_separator " "
           set -g @catppuccin_status_right_separator ""
 
+          # Ensure we only show the basename of the directory
           set -g @catppuccin_window_default_text "#{b:pane_current_path}"
           set -g @catppuccin_window_current_text "#{b:pane_current_path}"
-          set -g @catppuccin_window_status_enable "no" # Disable if you don't want hover effects
+          set -g @catppuccin_window_status_enable "yes" # Enable for hover effects
         '';
       }
     ];
@@ -122,9 +123,12 @@
       # Reload config (Ctrl-Space + r)
       bind r source-file ~/.tmux.conf \; display "Reloaded!"
 
-      # Force ALL tabs to use basename-only display (redundant but ensures consistency)
-      # set -g window-status-format "#I:#{b:pane_current_path}"
-      # set -g window-status-current-format "#I:#{b:pane_current_path}"
+      # Unbind Ctrl+Space+Space to prevent interference with Neovim
+      unbind-key -T prefix Space
+
+      # Force directory name display for all windows
+      set-window-option -g automatic-rename on
+      set-window-option -g automatic-rename-format '#{b:pane_current_path}'
     '';
   };
 
