@@ -120,9 +120,6 @@
       bind -n M-H previous-window
       bind -n M-L next-window
 
-      # Reload config (Ctrl-Space + r)
-      bind r source-file ~/.tmux.conf \; display "Reloaded!"
-
       # Unbind Ctrl+Space+Space to prevent interference with Neovim
       unbind-key -T prefix Space
 
