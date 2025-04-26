@@ -93,7 +93,6 @@
     shortcut = "Space";
     plugins = with pkgs.tmuxPlugins; [
       sensible
-      vim-tmux-navigator
       {
         plugin = catppuccin;
         extraConfig = ''
@@ -105,10 +104,12 @@
           set -g @catppuccin_status_left_separator " "
           set -g @catppuccin_status_right_separator ""
 
-          # Ensure we only show the basename of the directory
-          set -g @catppuccin_window_default_text "#{b:pane_current_path}"
-          set -g @catppuccin_window_current_text "#{b:pane_current_path}"
-          set -g @catppuccin_window_status_enable "yes" # Enable for hover effects
+          # Override window formatting completely
+          set -g @catppuccin_window_default_format "#W"
+          set -g @catppuccin_window_current_format "#W"
+          
+          # Disable the plugin's built-in window status
+          set -g @catppuccin_window_status_enable "no"
         '';
       }
     ];
@@ -120,12 +121,14 @@
       bind -n M-H previous-window
       bind -n M-L next-window
 
-      # Unbind Ctrl+Space+Space to prevent interference with Neovim
-      unbind-key -T prefix Space
-
-      # Force directory name display for all windows
-      set-window-option -g automatic-rename on
-      set-window-option -g automatic-rename-format '#{b:pane_current_path}'
+      # Force all windows to show only basename regardless of focus state
+      set-option -g status-interval 1
+      set-option -g automatic-rename on
+      set-option -g automatic-rename-format '#{b:pane_current_path}'
+      
+      # Explicitly set both window formats to show just the directory name
+      set-window-option -g window-status-format "#[fg=colour8]#I #[fg=colour8]#{b:pane_current_path}"
+      set-window-option -g window-status-current-format "#[fg=colour7]#I #[fg=colour7]#{b:pane_current_path}"
     '';
   };
 
