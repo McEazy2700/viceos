@@ -92,7 +92,6 @@
     shell = "${pkgs.fish}/bin/fish";
     shortcut = "Space";
     plugins = with pkgs.tmuxPlugins; [
-      sensible
       {
         plugin = catppuccin;
         extraConfig = ''
