@@ -187,6 +187,7 @@
     pgcli
     nixd
     bun
+    fzf
     # google-cloud-cli
 
     # Python
