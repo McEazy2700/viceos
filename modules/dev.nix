@@ -35,6 +35,11 @@
         dev_mine = "cd ~/Documents/dev/mine && tmux new -s Mine";
         dev_py39 = "nix develop ~/.dotfile/viceos/flakes/python3.9-dev/";
       };
+      shellInit = ''
+        set -Ux PYENV_ROOT $HOME/.pyenv
+        fish_add_path $PYENV_ROOT/bin
+        pyenv init - | source
+      '';
     };
     ghostty = {
       enable = true;
@@ -192,14 +197,14 @@
 
     # Python
     pipx
-    python310Full
-    python310Packages.pandas
-    python310Packages.pip
-    python310Packages.poetry-core
-    python310Packages.python-lsp-server
-    python310Packages.pylsp-mypy
-    python310Packages.pylsp-rope
-    python310Packages.rope
+    python3Full
+    python3Packages.pandas
+    python3Packages.pip
+    python3Packages.poetry-core
+    python3Packages.python-lsp-server
+    python3Packages.pylsp-mypy
+    python3Packages.pylsp-rope
+    python3Packages.rope
     python2NonConflicting
     pyenv
     black
