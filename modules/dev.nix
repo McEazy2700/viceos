@@ -197,6 +197,18 @@
     yaak
     # google-cloud-cli
 
+    zlib
+    bzip2
+    readline
+    sqlite
+    openssl
+    ncurses
+    libffi
+    xz
+    gnumake
+    gcc
+    patchelf
+
     # Python
     pipx
     python3Full
@@ -236,5 +248,25 @@
 
   home.sessionVariables = {
     GOPATH = "$HOME/go";
+    PYTHON_CONFIGURE_OPTS = "--enable-shared";
+    NIX_CFLAGS_COMPILE = "-I${pkgs.openssl.dev}/include";
+    NIX_CFLAGS_LINK = "-L${pkgs.openssl.out}/lib -L${pkgs.zlib.out}/lib -L${pkgs.libffi.out}/lib";
+    NIX_LDFLAGS = "-L${pkgs.openssl.out}/lib -L${pkgs.zlib.out}/lib -L${pkgs.libffi.out}/lib";
   };
+
+  home.file.".pyenv/.nix-deps".text = ''
+    export PATH="${lib.makeBinPath [
+      pkgs.zlib
+      pkgs.bzip2
+      pkgs.readline
+      pkgs.sqlite
+      pkgs.openssl
+      pkgs.ncurses
+      pkgs.libffi
+      pkgs.xz
+      pkgs.gnumake
+      pkgs.gcc
+      pkgs.patchelf
+    ]}:$PATH"
+  '';
 }
