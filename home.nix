@@ -150,6 +150,7 @@
     ./modules/nixvim/default.nix
     ./modules/nvf/default.nix
     ./modules/zenbrowser.nix
+    ./modules/rust-dev.nix
     # ./modules/eww.nix
   ];
 

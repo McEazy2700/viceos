@@ -212,15 +212,6 @@
     python3Packages.pytest
     libffi
     postman
-
-    # Rust development tools
-    (rust-bin.stable.latest.default.override {
-      targets = [ "wasm32-unknown-unknown" ];
-    })
-    cargo-edit
-    cargo-watch
-    cargo-audit
-    cargo-tauri
     gobject-introspection
 
     # Go development tools
@@ -243,6 +234,5 @@
 
   home.sessionVariables = {
     GOPATH = "$HOME/go";
-    CARGO_HOME = "$HOME/.cargo";
   };
 }
