@@ -193,6 +193,7 @@
     nixd
     bun
     fzf
+    lazygit
     # google-cloud-cli
 
     # Python
