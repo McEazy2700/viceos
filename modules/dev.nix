@@ -194,6 +194,7 @@
     bun
     fzf
     lazygit
+    yaak
     # google-cloud-cli
 
     # Python
