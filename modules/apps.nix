@@ -53,6 +53,6 @@
     fi
 
     # Create symlink
-    ln -sf $HOME/.dotfile/viceos/configs/lazy_vim_config $HOME/.config/nvim
+    ln -sf $HOME/.dotfile/viceos/configs/astrovim_config $HOME/.config/nvim
   '';
 }

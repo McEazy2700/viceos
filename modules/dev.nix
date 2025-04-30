@@ -198,6 +198,8 @@
     # google-cloud-cli
 
     zlib
+    zlib.static
+    openssl.dev
     bzip2
     readline
     sqlite
@@ -208,6 +210,20 @@
     gnumake
     gcc
     patchelf
+    tk # For _tkinter module
+    tk.dev # For Tk development headers
+    tcl # Required for Tk
+    xorg.libX11 # X11 dependencies for Tk
+    xorg.libXau
+    xorg.libXdmcp
+    xorg.libXext
+    gdbm # For dbm module
+    libuuid # May be needed for some Python builds
+
+    # # PHP
+    php83 # PHP 8.3 (adjust version if needed)
+    # php83Packages.composer # Composer for PHP dependencies
+    # php83Extensions.curl # Required PHP extensions
 
     # Python
     pipx
@@ -246,14 +262,35 @@
     bash
   ];
 
+  # Updated environment variables for Python compilation
   home.sessionVariables = {
     GOPATH = "$HOME/go";
-    PYTHON_CONFIGURE_OPTS = "--enable-shared";
-    NIX_CFLAGS_COMPILE = "-I${pkgs.openssl.dev}/include";
-    NIX_CFLAGS_LINK = "-L${pkgs.openssl.out}/lib -L${pkgs.zlib.out}/lib -L${pkgs.libffi.out}/lib";
-    NIX_LDFLAGS = "-L${pkgs.openssl.out}/lib -L${pkgs.zlib.out}/lib -L${pkgs.libffi.out}/lib";
+    # Modified Python configuration to handle NixOS better
+    PYTHON_CONFIGURE_OPTS = "--enable-shared --enable-optimizations --with-system-ffi";
+    CPPFLAGS = "-I${pkgs.openssl.dev}/include -I${pkgs.zlib.dev}/include -I${pkgs.bzip2.dev}/include -I${pkgs.readline.dev}/include -I${pkgs.sqlite.dev}/include -I${pkgs.ncurses.dev}/include -I${pkgs.libffi.dev}/include";
+    LDFLAGS = "-L${pkgs.openssl.out}/lib -L${pkgs.zlib.out}/lib -L${pkgs.bzip2.out}/lib -L${pkgs.readline.out}/lib -L${pkgs.sqlite.out}/lib -L${pkgs.ncurses.out}/lib -L${pkgs.libffi.out}/lib";
+    # We don't set PKG_CONFIG_PATH here to avoid conflicts
   };
 
+  # Updated activation script for pyenv
+  home.activation.pyenvSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    export PATH="${lib.makeBinPath [
+      pkgs.zlib
+      pkgs.bzip2
+      pkgs.readline
+      pkgs.sqlite
+      pkgs.openssl
+      pkgs.ncurses
+      pkgs.libffi
+      pkgs.xz
+      pkgs.gnumake
+      pkgs.gcc
+      pkgs.patchelf
+      pkgs.tk
+    ]}:$PATH"
+  '';
+
+  # Updated .nix-deps file with more comprehensive environment setup
   home.file.".pyenv/.nix-deps".text = ''
     export PATH="${lib.makeBinPath [
       pkgs.zlib
@@ -267,6 +304,32 @@
       pkgs.gnumake
       pkgs.gcc
       pkgs.patchelf
+      pkgs.tk
+      pkgs.tcl
+      pkgs.xorg.libX11
+      pkgs.gdbm
     ]}:$PATH"
+    
+    # Set build environment for Python compilation
+    export CPPFLAGS="-I${pkgs.openssl.dev}/include -I${pkgs.zlib.dev}/include -I${pkgs.bzip2.dev}/include -I${pkgs.readline.dev}/include -I${pkgs.sqlite.dev}/include -I${pkgs.ncurses.dev}/include -I${pkgs.libffi.dev}/include -I${pkgs.tk.dev}/include -I${pkgs.xz.dev}/include"
+    export LDFLAGS="-L${pkgs.openssl.out}/lib -L${pkgs.zlib.out}/lib -L${pkgs.bzip2.out}/lib -L${pkgs.readline.out}/lib -L${pkgs.sqlite.out}/lib -L${pkgs.ncurses.out}/lib -L${pkgs.libffi.out}/lib -L${pkgs.tk.out}/lib -L${pkgs.tcl.out}/lib -L${pkgs.xz.out}/lib"
+    
+    # Get the existing PKG_CONFIG_PATH if any
+    if [ -n "$PKG_CONFIG_PATH" ]; then
+      export PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.libffi.dev}/lib/pkgconfig:${pkgs.tk.dev}/lib/pkgconfig:${pkgs.xz.dev}/lib/pkgconfig:$PKG_CONFIG_PATH"
+    else
+      export PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.libffi.dev}/lib/pkgconfig:${pkgs.tk.dev}/lib/pkgconfig:${pkgs.xz.dev}/lib/pkgconfig"
+    fi
+    
+    # Set a specific variable for Tcl/Tk to help configure find it
+    export TCL_LIBRARY="${pkgs.tcl}/lib"
+    export TK_LIBRARY="${pkgs.tk}/lib"
+    export TKPATH="${pkgs.tk}/lib/tk8.6"
+    
+    # For LZMA support
+    export XZ_INCLUDE="${pkgs.xz.dev}/include"
+    export XZ_LIB="${pkgs.xz.out}/lib"
+    
+    export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations --with-system-ffi --with-system-expat --with-ensurepip=no --with-tcltk-includes=-I${pkgs.tk.dev}/include --with-tcltk-libs=-L${pkgs.tk.out}/lib"
   '';
 }
