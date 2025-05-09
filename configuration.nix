@@ -5,6 +5,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./configs/nix/audio.nix
   ];
 
   powerManagement.cpuFreqGovernor = "performance";
@@ -140,7 +141,6 @@
 
   services.getty.autologinUser = "vice";
 
-  # Enable sound with pipewire.
   hardware = {
     graphics = {
       enable = true;
@@ -150,16 +150,6 @@
     xone.enable = true;
   };
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-
-    # jack.enable = true;
-    # wireplumber.enable = true;
-    # audio.enable = true;
-  };
 
   # Enable XDG portal
   xdg.portal = {
@@ -221,11 +211,6 @@
     ffmpeg
     gh
     git
-    pavucontrol
-    pulseaudio
-    pulseaudio-ctl
-    pamixer
-    alsa-utils
     podman
     podman-tui
     podman-compose
