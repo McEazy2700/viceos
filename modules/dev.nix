@@ -96,27 +96,6 @@
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
     shortcut = "Space";
-    plugins = with pkgs.tmuxPlugins; [
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_flavour "mocha"  # Latte/frappe/macchiato/mocha
-          set -g @catppuccin_window_left_separator ""
-          set -g @catppuccin_window_right_separator " "
-          set -g @catppuccin_window_middle_separator " █"
-          set -g @catppuccin_status_modules_right "directory session date_time"
-          set -g @catppuccin_status_left_separator " "
-          set -g @catppuccin_status_right_separator ""
-
-          # Override window formatting completely
-          set -g @catppuccin_window_default_format "#W"
-          set -g @catppuccin_window_current_format "#W"
-          
-          # Disable the plugin's built-in window status
-          set -g @catppuccin_window_status_enable "no"
-        '';
-      }
-    ];
     extraConfig = ''
       # True color support (critical for Neovim)
       set -ag terminal-overrides ",xterm*:RGB"
@@ -124,6 +103,7 @@
       # Vim-like pane navigation (Alt+h/j/k/l)
       bind -n M-H previous-window
       bind -n M-L next-window
+      unbind-key -T prefix C-Space
 
       # Force all windows to show only basename regardless of focus state
       set-option -g status-interval 1

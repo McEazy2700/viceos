@@ -21,6 +21,7 @@
       grc
       tree
       anydesk
+      firefox-devedition-bin
       opera
     ];
   };
