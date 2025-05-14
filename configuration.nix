@@ -218,6 +218,7 @@
     podman-tui
     podman-compose
     podman-desktop
+    tor-browser
     qemu_full
     fastfetch
     mangohud
