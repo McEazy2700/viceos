@@ -22,6 +22,7 @@
       tree
       anydesk
       firefox-devedition-bin
+      vivaldi
       opera
     ];
   };
