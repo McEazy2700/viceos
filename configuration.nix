@@ -222,6 +222,7 @@
     qemu_full
     fastfetch
     mangohud
+    acip
     code-cursor
     (heroic.override {
       extraPkgs = pkgs: [
