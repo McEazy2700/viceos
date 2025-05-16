@@ -159,6 +159,7 @@
           "backlight"
           "memory"
           "cpu"
+          "battery"
           "network"
           "custom/powermenu"
           "tray"
@@ -200,6 +201,10 @@
         "cpu" = {
           "interval" = 1;
           "format" = "󰍛 {usage}%";
+        };
+        "battery" = {
+          "interval" = 1;
+          "format" = "󰁹{capacity}%";
         };
         "mpd" = {
           "max-length" = 25;
