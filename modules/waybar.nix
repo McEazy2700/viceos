@@ -204,7 +204,7 @@
         };
         "battery" = {
           "interval" = 1;
-          "format" = "󰁹{capacity}%";
+          "format" = "󰁹 {capacity}%";
         };
         "mpd" = {
           "max-length" = 25;
