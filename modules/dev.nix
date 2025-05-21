@@ -236,6 +236,7 @@
     pnpm
     yarn
     nodePackages.pnpm
+    nodePackages.bun
     nodePackages.npm
     nodePackages.typescript
     nodePackages.typescript-language-server
