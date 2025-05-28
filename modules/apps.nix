@@ -23,6 +23,7 @@
       anydesk
       firefox-devedition-bin
       vivaldi
+      libreoffice
       opera
     ];
   };
